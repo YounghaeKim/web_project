@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC 
+"-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="www.spring.com.user.mapper.userMapper">
+	<resultMap id="rm4userVO"
+		type="www.spring.com.user.model.userVO">
+		<id property="customerNumber" column="CUSTOMER_NUMBER" />
+		<result property="id" column="ID" />
+		<result property="password" column="PASSWORD" />
+		<result property="phoneNumber" column="PHONE_NUMBER" />
+		<result property="email" column="EMAIL" />
+		<result property="name" column="NAME" />
+		<result property="gender" column="GENDER" />
+		<result property="currentCash" column="CURRENT_CASH" />
+		<result property="totalCash" column="TOTAL_CASH" />
+		<result property="winRate" column="WIN_RATE" />
+		<result property="registDate" column="REGIST_DATE" />
+	</resultMap>
+	
+	<select id="getAllBoard" resultMap="rm4userVO">
+		<!-- 순수 SQL문으로만 인식해라 연산이 들어갈 경우 -->
+		<![CDATA[
+			select * from CUSTOMER
+		]]>
+	</select>
+</mapper>

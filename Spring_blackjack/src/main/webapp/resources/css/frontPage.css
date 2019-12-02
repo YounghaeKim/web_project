@@ -1,0 +1,96 @@
+@charset "UTF-8";
+
+/* Style the header */
+
+.column {
+  float: left;
+  padding: 10px;
+ 
+}
+
+/* Left and right column */
+.column.side {
+  width: 15%;
+  text-align: center
+}
+
+.column.left {
+  float: left;
+  height: 490px;
+  width: 14%;
+  background-color: #D69A4E;
+  padding-left: 10px;
+  padding-top: 150px;  
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  
+}
+
+/* Middle column */
+.column.middle {
+  max-width: 100%;
+  height: auto;
+  width: 50%;
+  position: relative
+}
+
+#login button { 
+  border-radius: 5px;
+  background-color: #FFE270;
+  color: #22636B; 
+  border: 2px solid #945848;
+  height: 40px;
+  width: 80px;
+  font-weight: bolder;
+   
+}
+
+#login button:hover{ 
+  background-color: #945848;
+  color: white;
+}
+
+
+
+.textbox {
+	position: relative; 
+	width: 240px; 
+	margin: 15px
+}
+
+.textbox label {
+  position: absolute;
+  top: 1px;  /* input 요소의 border-top 설정값 만큼 */
+  left: 1px;  /* input 요소의 border-left 설정값 만큼 */
+  padding: .8em .2em;  /* input 요소의 padding 값 만큼 */
+  color: #c0c0c0;
+  cursor: text;
+}
+
+.textbox input[type="text"],
+.textbox input[type="password"] {
+  width: 100%;  /* 원하는 너비 설정 */ 
+  height: auto;  /* 높이값 초기화 */
+  line-height : normal;  /* line-height 초기화 */
+  padding: .8em .5em; /* 원하는 여백 설정, 상하단 여백으로 높이를 조절 */
+  border: 1px solid #D95B9A;
+  border-radius: 5;  /* iSO 둥근모서리 제거 */
+  outline-style: none;  /* 포커스시 발생하는 효과 제거를 원한다면 */
+  -webkit-appearance: none;  /* 브라우저별 기본 스타일링 제거 */
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+@media screen and (max-width: 600px) {
+  .column.side, .column.middle {
+    width: 100%;
+  }
+}
+
+
