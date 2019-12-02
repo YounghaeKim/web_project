@@ -5,18 +5,18 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import www.spring.com.user.mapper.userMapper;
-import www.spring.com.user.model.userVO;
+import www.spring.com.user.mapper.UserMapper;
+import www.spring.com.user.model.UserVO;
 
 @Service
 public class profileServiceImpl implements profileService{
 
 	@Autowired
-	private userMapper boardMapper;
+	private UserMapper boardMapper;
 	
 	@Override
-	public List<userVO> getAllBoard() {
-		List<userVO> listAllBoard = boardMapper.getAllBoard();
+	public List<UserVO> getAllBoard() {
+		List<UserVO> listAllBoard = boardMapper.getAllBoard();
 		return listAllBoard;
 	}
 	

@@ -1,9 +1,9 @@
-package www.spring.com.cashCharging.service;
+package www.spring.com.user.mapper;
 
 import java.util.List;
 
 import www.spring.com.user.model.UserVO;
 
-public interface cashChargingService {
+public interface UserMapper {
 	public List<UserVO> getAllBoard();
 }

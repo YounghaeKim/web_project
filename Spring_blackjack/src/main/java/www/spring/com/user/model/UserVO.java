@@ -2,7 +2,7 @@ package www.spring.com.user.model;
 
 import java.sql.Date;
 
-public class userVO {
+public class UserVO {
 	
 	private int customerNumber;
 	private String id;	
@@ -31,7 +31,7 @@ public class userVO {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		userVO other = (userVO) obj;
+		UserVO other = (UserVO) obj;
 		if (customerNumber != other.customerNumber)
 			return false;
 		return true;

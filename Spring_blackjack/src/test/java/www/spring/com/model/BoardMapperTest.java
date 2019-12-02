@@ -10,8 +10,8 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import lombok.extern.log4j.Log4j;
-import www.spring.com.user.mapper.userMapper;
-import www.spring.com.user.model.userVO;
+import www.spring.com.user.mapper.UserMapper;
+import www.spring.com.user.model.UserVO;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("file:src/main/webapp/WEB-INF/spring/root-context.xml")
@@ -22,12 +22,12 @@ public class BoardMapperTest {
 	private SqlSessionFactory sqlSessionFactory;
 	
 	@Autowired
-	private userMapper boardMapper;
+	private UserMapper boardMapper;
 	
 	@Test
 	public void testListAllBoard() {
-		List<userVO> list = boardMapper.getAllBoard();
-		for (userVO board : list) {
+		List<UserVO> list = boardMapper.getAllBoard();
+		for (UserVO board : list) {
 			System.out.println(board);
 			log.info(board);//보통의 경우
 		}

@@ -2,8 +2,8 @@ package www.spring.com.signUp.service;
 
 import java.util.List;
 
-import www.spring.com.user.model.userVO;
+import www.spring.com.user.model.UserVO;
 
 public interface SignUpService {
-	public List<userVO> getAllBoard();
+	public List<UserVO> getAllBoard();
 }

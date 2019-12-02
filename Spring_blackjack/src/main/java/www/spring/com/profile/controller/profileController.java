@@ -8,7 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import www.spring.com.profile.service.profileService;
-import www.spring.com.user.model.userVO;
+import www.spring.com.user.model.UserVO;
 
 @Controller
 public class profileController {
@@ -18,7 +18,7 @@ public class profileController {
 	
 	@RequestMapping("/profile.do")
 	public String listAllBoard(Model model) {
-		List<userVO> listAllBoard = boardService.getAllBoard();
+		List<UserVO> listAllBoard = boardService.getAllBoard();
 		model.addAttribute("listAllCustomer", listAllBoard);
 		return "profile/profilePage";
 	}

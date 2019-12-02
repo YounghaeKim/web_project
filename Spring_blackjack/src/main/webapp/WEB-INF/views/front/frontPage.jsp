@@ -15,7 +15,7 @@ pageEncoding="UTF-8"%>
 	
 	<div class="topnav">
 	<ul>
-  <li><a class="active" href="/">Home</a></li>
+  		<li><a class="active" href="/">Home</a></li>
 		<li><a href="signUp.do">회원가입</a></li>
 		<li><a href="robby.do">QnA</a></li>
 		<li><a href="gameInfo.do">게임설명</a></li>
@@ -32,6 +32,7 @@ pageEncoding="UTF-8"%>
 		<div class="column left"> 
 			<img alt="casino" src="resources/img/LOGO_2.png" style="width:20%">
 			<br><br>
+			<form name="loginCheck.do" method="post">
 				<div class="textbox">
 					<label for="ex_input">아이디</label> <input type="text" id="ex_input">
 				</div>
@@ -40,10 +41,10 @@ pageEncoding="UTF-8"%>
 					<label for="ex_input2">패스워드</label> <input type="password"
 						id="ex_input2">
 				</div>
-
 			<div id="login">
 			<button id="login_button" type="button" onclick="location.href='robby.do' ">로그인</button>
 	    	</div>
+			</form>
 	  	</div>
 	  	
 	  	
