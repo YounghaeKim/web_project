@@ -9,7 +9,7 @@ import www.spring.com.user.mapper.UserMapper;
 import www.spring.com.user.model.UserVO;
 
 @Service
-public class cashChargingServiceImpl implements cashChargingService{
+public class CashChargingServiceImpl implements CashChargingService{
 
 	@Autowired
 	private UserMapper boardMapper;

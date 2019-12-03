@@ -1,4 +1,4 @@
-package www.spring.com.profile.service;
+package www.spring.com.robby.service;
 
 import java.util.List;
 
@@ -9,7 +9,7 @@ import www.spring.com.user.mapper.UserMapper;
 import www.spring.com.user.model.UserVO;
 
 @Service
-public class profileServiceImpl implements profileService{
+public class RobbyServiceImpl implements RobbyService{
 
 	@Autowired
 	private UserMapper boardMapper;

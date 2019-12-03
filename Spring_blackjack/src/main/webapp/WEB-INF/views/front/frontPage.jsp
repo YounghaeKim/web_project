@@ -32,17 +32,18 @@ pageEncoding="UTF-8"%>
 		<div class="column left"> 
 			<img alt="casino" src="resources/img/LOGO_2.png" style="width:20%">
 			<br><br>
-			<form name="loginCheck.do" method="post">
+			<form name="loginCheck" method="post" action="loginCheck.do"><!-- 로그인 체크, 포스트 -->
 				<div class="textbox">
-					<label for="ex_input">아이디</label> <input type="text" id="ex_input">
+					<label for="id">아이디</label> 
+					<input type="text" id="id" name="id">
 				</div>
 	
 				<div class="textbox">
-					<label for="ex_input2">패스워드</label> <input type="password"
-						id="ex_input2">
+					<label for="password">패스워드</label> 
+					<input type="password" id="password" name="password">
 				</div>
 			<div id="login">
-			<button id="login_button" type="button" onclick="location.href='robby.do' ">로그인</button>
+			<button id="login_button" type=submit>로그인</button>
 	    	</div>
 			</form>
 	  	</div>

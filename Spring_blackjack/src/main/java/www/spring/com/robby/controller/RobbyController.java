@@ -11,7 +11,7 @@ import www.spring.com.robby.service.RobbyService;
 import www.spring.com.user.model.UserVO;
 
 @Controller
-public class robbyController {
+public class RobbyController {
 	
 	@Autowired
 	private RobbyService boardService;//서비스에 연결시킨다.

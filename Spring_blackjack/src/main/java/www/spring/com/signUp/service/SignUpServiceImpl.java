@@ -9,7 +9,7 @@ import www.spring.com.user.mapper.UserMapper;
 import www.spring.com.user.model.UserVO;
 
 @Service
-public class signUpServiceImpl implements SignUpService{
+public class SignUpServiceImpl implements SignUpService{
 
 	@Autowired
 	private UserMapper boardMapper;

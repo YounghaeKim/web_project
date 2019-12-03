@@ -2,6 +2,8 @@ package www.spring.com.frontPage.controller;
 
 import java.util.Locale;
 
+import javax.servlet.http.HttpSession;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,9 +21,9 @@ import www.spring.com.user.model.UserVO;
  * Handles requests for the application home page.
  */
 @Controller
-public class frontController {
+public class FrontController {
 	
-	private static final Logger logger = LoggerFactory.getLogger(frontController.class);
+	private static final Logger logger = LoggerFactory.getLogger(FrontController.class);
 	@Autowired
 	private LoginService loginService;
 	
@@ -35,19 +37,17 @@ public class frontController {
 		return "front/frontPage";
 	}
 	
-	// 로그인
-	@RequestMapping(value = "/loginCheck.do", method = RequestMethod.POST)
-	public ModelAndView loginCheck(@ModelAttribute UserVO loginInfo) {
-		boolean result = loginService.loginCheck(loginInfo);
+	@RequestMapping(value = "/loginCheck.do", method = {RequestMethod.POST, RequestMethod.GET})
+	public ModelAndView loginCheck(@ModelAttribute UserVO logingUser, HttpSession logingSession) {
+		System.out.println("로그인 체크 시작");
+		System.out.println(logingUser.getId() +"로그인 요청");
+		
 		ModelAndView mav = new ModelAndView();
-		if(result == true) {	// 로그인 성공
-			// robby.jsp로 이동
-			mav.setViewName("robby");
-			// !!로그인 안해도 로비 이동 가능!!
-		} else {	// 로그인 실패
-			// frontPage.jsp로 이동
+		if (loginService.loginCheck(logingUser, logingSession)) {//로그인 성공
+			mav.setViewName("robby");;
+		} else {//로그인 실패
 			mav.setViewName("front/frontPage");
-			mav.addObject("msg", "failure");
+			mav.addObject("msg", "failure");//실패 메시지
 		}
 		return mav;
 	}

@@ -1,4 +1,4 @@
-package www.spring.com.profile.controller;
+package www.spring.com.cashCharging.controller;
 
 import java.util.List;
 
@@ -7,19 +7,19 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import www.spring.com.profile.service.profileService;
+import www.spring.com.cashCharging.service.CashChargingService;
 import www.spring.com.user.model.UserVO;
 
 @Controller
-public class profileController {
+public class CashChargingController {
 	
 	@Autowired
-	private profileService boardService;//서비스에 연결시킨다.
+	private CashChargingService boardService;//서비스에 연결시킨다.
 	
-	@RequestMapping("/profile.do")
+	@RequestMapping("/cashCharging.do")
 	public String listAllBoard(Model model) {
 		List<UserVO> listAllBoard = boardService.getAllBoard();
 		model.addAttribute("listAllCustomer", listAllBoard);
-		return "profile/profilePage";
+		return "cashCharging/cashChargingPage";
 	}
 }
