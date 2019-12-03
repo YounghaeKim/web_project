@@ -40,14 +40,16 @@ public class FrontController {
 	@RequestMapping(value = "/loginCheck.do", method = {RequestMethod.POST, RequestMethod.GET})
 	public ModelAndView loginCheck(@ModelAttribute UserVO logingUser, HttpSession logingSession) {
 		System.out.println("로그인 체크 시작");
-		System.out.println(logingUser.getId() +"로그인 요청");
+		System.out.println(logingUser.getId() +" 로그인 요청");
 		
 		ModelAndView mav = new ModelAndView();
 		if (loginService.loginCheck(logingUser, logingSession)) {//로그인 성공
-			mav.setViewName("robby");;
+			mav.setViewName("robby/robbyPage");;
+			System.out.println("로그인 성공");
 		} else {//로그인 실패
 			mav.setViewName("front/frontPage");
-			mav.addObject("msg", "failure");//실패 메시지
+			mav.addObject("msg", "loginFail");//실패 메시지
+			System.out.println("로그인 실패");
 		}
 		return mav;
 	}

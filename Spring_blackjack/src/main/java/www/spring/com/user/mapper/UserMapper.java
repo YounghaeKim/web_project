@@ -6,5 +6,5 @@ import www.spring.com.user.model.UserVO;
 
 public interface UserMapper {
 	public List<UserVO> getAllBoard();
-	public UserVO loginCheck(UserVO logingUser);
+	public UserVO loginRequest(UserVO logingUser);
 }

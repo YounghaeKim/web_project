@@ -26,7 +26,7 @@
 		<result property="registDate" column="REGIST_DATE" />
 	</resultMap>
 	
-	<select id="loginCheck" resultMap="logingId">
+	<select id="loginRequest" resultMap="logingId">
 		<!-- 순수 SQL문으로만 인식해라 연산이 들어갈 경우 -->
 		<![CDATA[
 			select * from CUSTOMER where ID = #{id}
