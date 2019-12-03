@@ -36,13 +36,13 @@ public class FrontController {
 		
 		return "front/frontPage";
 	}
-	
+	//view -> controller -> service -> mapper.java -> mapper.xml
 	@RequestMapping(value = "/loginCheck.do", method = {RequestMethod.POST, RequestMethod.GET})
 	public ModelAndView loginCheck(@ModelAttribute UserVO logingUser, HttpSession logingSession) {
 		System.out.println("로그인 체크 시작");
 		System.out.println(logingUser.getId() +" 로그인 요청");
 		
-		ModelAndView mav = new ModelAndView();
+		ModelAndView mav = new ModelAndView();//뷰에 모델(데이터)을 전송할 수 있는 타입
 		if (loginService.loginCheck(logingUser, logingSession)) {//로그인 성공
 			mav.setViewName("robby/robbyPage");;
 			System.out.println("로그인 성공");

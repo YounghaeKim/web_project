@@ -7,6 +7,11 @@ pageEncoding="UTF-8"%>
 	<link rel="stylesheet" href="resources/css/Header.css"  type="text/css" />
 	<link rel="stylesheet" href="resources/css/frontPage.css"  type="text/css" />
 	<title>초기 페이지</title>
+	
+	<script language="javascript">
+		function loginFailPopUp() { window.open("08_2_popup.html", "a", "width=400, height=300, left=100, top=50"); }
+	</script>
+	
 </head>
 <body>
 	<div class="header">
@@ -37,11 +42,15 @@ pageEncoding="UTF-8"%>
 					<label for="id">아이디</label> 
 					<input type="text" id="id" name="id">
 				</div>
-	
 				<div class="textbox">
 					<label for="password">패스워드</label> 
 					<input type="password" id="password" name="password">
 				</div>
+			<c:if test="${msg == 'loginFail'}">
+				<script>
+     				alert( '아이디 또는 비밀번호가 일치하지 않습니다.' );
+    			</script>
+			</c:if>
 			<div id="login">
 			<button id="login_button" type=submit>로그인</button>
 	    	</div>
