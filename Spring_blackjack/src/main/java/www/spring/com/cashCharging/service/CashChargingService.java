@@ -1,9 +1,9 @@
-package www.spring.com.signUp.service;
+package www.spring.com.cashCharging.service;
 
 import java.util.List;
 
 import www.spring.com.user.model.UserVO;
 
-public interface SignUpService {
+public interface CashChargingService {
 	public List<UserVO> getAllBoard();
 }

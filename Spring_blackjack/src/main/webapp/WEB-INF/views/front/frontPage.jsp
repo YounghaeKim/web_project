@@ -7,6 +7,11 @@ pageEncoding="UTF-8"%>
 	<link rel="stylesheet" href="resources/css/Header.css"  type="text/css" />
 	<link rel="stylesheet" href="resources/css/frontPage.css"  type="text/css" />
 	<title>초기 페이지</title>
+	
+	<script language="javascript">
+		function loginFailPopUp() { window.open("08_2_popup.html", "a", "width=400, height=300, left=100, top=50"); }
+	</script>
+	
 </head>
 <body>
 	<div class="header">
@@ -15,7 +20,7 @@ pageEncoding="UTF-8"%>
 	
 	<div class="topnav">
 	<ul>
-  <li><a class="active" href="/">Home</a></li>
+  		<li><a class="active" href="/">Home</a></li>
 		<li><a href="signUp.do">회원가입</a></li>
 		<li><a href="robby.do">QnA</a></li>
 		<li><a href="gameInfo.do">게임설명</a></li>
@@ -32,18 +37,24 @@ pageEncoding="UTF-8"%>
 		<div class="column left"> 
 			<img alt="casino" src="resources/img/LOGO_2.png" style="width:20%">
 			<br><br>
+			<form name="loginCheck" method="post" action="loginCheck.do"><!-- 로그인 체크, 포스트 -->
 				<div class="textbox">
-					<label for="ex_input">아이디</label> <input type="text" id="ex_input">
+					<label for="id">아이디</label> 
+					<input type="text" id="id" name="id">
 				</div>
-	
 				<div class="textbox">
-					<label for="ex_input2">패스워드</label> <input type="password"
-						id="ex_input2">
+					<label for="password">패스워드</label> 
+					<input type="password" id="password" name="password">
 				</div>
-
+			<c:if test="${msg == 'loginFail'}">
+				<script>
+     				alert( '아이디 또는 비밀번호가 일치하지 않습니다.' );
+    			</script>
+			</c:if>
 			<div id="login">
-			<button id="login_button" type="button" onclick="location.href='robby.do' ">로그인</button>
+			<button id="login_button" type=submit>로그인</button>
 	    	</div>
+			</form>
 	  	</div>
 	  	
 	  	

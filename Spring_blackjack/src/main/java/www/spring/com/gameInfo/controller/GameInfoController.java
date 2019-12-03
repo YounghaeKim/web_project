@@ -5,7 +5,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-public class gameInfoController {
+public class GameInfoController {
 	@RequestMapping("/gameInfo.do")
 	public String listAllBoard(Model model) {
 		return "gameInfo/gameInfoPage";

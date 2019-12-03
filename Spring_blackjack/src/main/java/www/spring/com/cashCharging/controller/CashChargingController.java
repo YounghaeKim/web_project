@@ -7,18 +7,18 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import www.spring.com.cashCharging.service.cashChargingService;
-import www.spring.com.user.model.userVO;
+import www.spring.com.cashCharging.service.CashChargingService;
+import www.spring.com.user.model.UserVO;
 
 @Controller
-public class cashChargingController {
+public class CashChargingController {
 	
 	@Autowired
-	private cashChargingService boardService;//서비스에 연결시킨다.
+	private CashChargingService boardService;//서비스에 연결시킨다.
 	
 	@RequestMapping("/cashCharging.do")
 	public String listAllBoard(Model model) {
-		List<userVO> listAllBoard = boardService.getAllBoard();
+		List<UserVO> listAllBoard = boardService.getAllBoard();
 		model.addAttribute("listAllCustomer", listAllBoard);
 		return "cashCharging/cashChargingPage";
 	}

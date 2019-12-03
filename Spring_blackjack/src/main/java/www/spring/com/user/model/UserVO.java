@@ -2,7 +2,7 @@ package www.spring.com.user.model;
 
 import java.sql.Date;
 
-public class userVO {
+public class UserVO {
 	
 	private int customerNumber;
 	private String id;	
@@ -12,9 +12,9 @@ public class userVO {
 	private String name;
 	private String gender;
 	private long currentCash;
-	private long totalCash;
+	private long totalAmount;
 	private int winRate;
-	private Date registDate;
+	private Date registrationDate;
 	
 	@Override
 	public int hashCode() {
@@ -31,7 +31,7 @@ public class userVO {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		userVO other = (userVO) obj;
+		UserVO other = (UserVO) obj;
 		if (customerNumber != other.customerNumber)
 			return false;
 		return true;
@@ -85,10 +85,10 @@ public class userVO {
 		this.currentCash = currentCash;
 	}
 	public long getTotalCash() {
-		return totalCash;
+		return totalAmount;
 	}
 	public void setTotalCash(long totalCash) {
-		this.totalCash = totalCash;
+		this.totalAmount = totalCash;
 	}
 	public int getWinRate() {
 		return winRate;
@@ -97,10 +97,10 @@ public class userVO {
 		this.winRate = winRate;
 	}
 	public Date getRegistDate() {
-		return registDate;
+		return registrationDate;
 	}
 	public void setRegistDate(Date registDate) {
-		this.registDate = registDate;
+		this.registrationDate = registDate;
 	}
 	
 }
