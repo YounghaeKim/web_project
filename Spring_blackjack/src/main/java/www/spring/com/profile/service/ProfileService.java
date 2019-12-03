@@ -5,5 +5,5 @@ import java.util.List;
 import www.spring.com.user.model.UserVO;
 
 public interface ProfileService {
-	public List<UserVO> getAllBoard();
+	public UserVO getCurrentUser(UserVO findingUser);
 }

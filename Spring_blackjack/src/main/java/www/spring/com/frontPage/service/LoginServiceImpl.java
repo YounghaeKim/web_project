@@ -23,7 +23,8 @@ public class LoginServiceImpl implements LoginService{
 			return false;
 		
 		if (logingUser.getPassword().equals(searchedUser.getPassword()))//비밀번호가 맞다면
-			session.setAttribute("customerNumber", logingUser.getCustomerNumber());//로그인 세선 등록
+			//로그인 세선에 유저 등록
+			session.setAttribute("customerNumber", searchedUser);
 		
 		return logingUser.getPassword().equals(searchedUser.getPassword());
 	}

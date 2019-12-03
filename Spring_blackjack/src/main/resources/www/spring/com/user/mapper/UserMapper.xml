@@ -4,38 +4,31 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="www.spring.com.user.mapper.UserMapper">
-	<select id="getAllBoard" resultMap="rm4userVO">
+	<select id="getAllBoard" resultMap="UserInfo">
 		<!-- 순수 SQL문으로만 인식해라 연산이 들어갈 경우 -->
 		<![CDATA[
 			select * from CUSTOMER
 		]]>
 	</select>
-
-	<resultMap id="rm4userVO"
-		type="www.spring.com.user.model.UserVO">
-		<id property="customerNumber" column="CUSTOMER_NUMBER" />
-		<result property="id" column="ID" />
-		<result property="password" column="PASSWORD" />
-		<result property="phoneNumber" column="PHONE_NUMBER" />
-		<result property="email" column="EMAIL" />
-		<result property="name" column="NAME" />
-		<result property="gender" column="GENDER" />
-		<result property="currentCash" column="CURRENT_CASH" />
-		<result property="totalCash" column="TOTAL_CASH" />
-		<result property="winRate" column="WIN_RATE" />
-		<result property="registDate" column="REGIST_DATE" />
-	</resultMap>
 	
-	<select id="loginRequest" resultMap="logingId">
+	<select id="loginRequest" resultMap="UserInfo">
 		<!-- 순수 SQL문으로만 인식해라 연산이 들어갈 경우 -->
 		<![CDATA[
 			select * from CUSTOMER where ID = #{id}
 		]]>
 		<!-- 로그인 중인 아이디로 유저 객체 생성 -->
 	</select>
+	
+	<select id="findUser" resultMap="UserInfo">
+		<!-- 순수 SQL문으로만 인식해라 연산이 들어갈 경우 -->
+		<![CDATA[
+			select * from CUSTOMER where CUSTOMER_NUMBER = #{customerNumber}
+		]]>
+		<!-- 로그인 중인 아이디로 유저 객체 생성 -->
+	</select>
 		
-	<!-- 로그인 중인 아이디가 존재하면 유저 객체 생성 -->
-	<resultMap id="logingId"
+	<!-- 유저 객체 생성 -->
+	<resultMap id="UserInfo"
 		type="www.spring.com.user.model.UserVO">
 		<id property="customerNumber" column="CUSTOMER_NUMBER" />
 		<result property="id" column="ID" />
@@ -45,9 +38,9 @@
 		<result property="name" column="NAME" />
 		<result property="gender" column="GENDER" />
 		<result property="currentCash" column="CURRENT_CASH" />
-		<result property="totalCash" column="TOTAL_CASH" />
+		<result property="totalAmount" column="TOTAL_AMOUNT" />
 		<result property="winRate" column="WIN_RATE" />
-		<result property="registDate" column="REGIST_DATE" />
+		<result property="registrationDate" column="REGISTRATION_DATE" />
 	</resultMap>
 	
 	

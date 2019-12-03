@@ -12,12 +12,12 @@ import www.spring.com.user.model.UserVO;
 public class ProfileServiceImpl implements ProfileService{
 
 	@Autowired
-	private UserMapper boardMapper;
-	
+	private UserMapper userMapper;
+
 	@Override
-	public List<UserVO> getAllBoard() {
-		List<UserVO> listAllBoard = boardMapper.getAllBoard();
-		return listAllBoard;
+	public UserVO getCurrentUser(UserVO findingUser) {
+		UserVO findedUser = userMapper.findUser(findingUser);
+		return findedUser;
 	}
 	
 }

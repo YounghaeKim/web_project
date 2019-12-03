@@ -17,19 +17,13 @@ import org.springframework.web.servlet.ModelAndView;
 import www.spring.com.frontPage.service.LoginService;
 import www.spring.com.user.model.UserVO;
 
-/**
- * Handles requests for the application home page.
- */
 @Controller
 public class FrontController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(FrontController.class);
 	@Autowired
 	private LoginService loginService;
-	
-	/**
-	 * Simply selects the home view to render by returning its name.
-	 */
+
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Locale locale, Model model) {
 		logger.info("로그인 화면", locale);

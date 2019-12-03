@@ -12,9 +12,9 @@ public class UserVO {
 	private String name;
 	private String gender;
 	private long currentCash;
-	private long totalCash;
+	private long totalAmount;
 	private int winRate;
-	private Date registDate;
+	private Date registrationDate;
 	
 	@Override
 	public int hashCode() {
@@ -85,10 +85,10 @@ public class UserVO {
 		this.currentCash = currentCash;
 	}
 	public long getTotalCash() {
-		return totalCash;
+		return totalAmount;
 	}
 	public void setTotalCash(long totalCash) {
-		this.totalCash = totalCash;
+		this.totalAmount = totalCash;
 	}
 	public int getWinRate() {
 		return winRate;
@@ -97,10 +97,10 @@ public class UserVO {
 		this.winRate = winRate;
 	}
 	public Date getRegistDate() {
-		return registDate;
+		return registrationDate;
 	}
 	public void setRegistDate(Date registDate) {
-		this.registDate = registDate;
+		this.registrationDate = registDate;
 	}
 	
 }
