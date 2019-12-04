@@ -27,7 +27,6 @@ public class FrontController {
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Locale locale, Model model) {
 		logger.info("로그인 화면", locale);
-		
 		return "front/frontPage";
 	}
 	//view -> controller -> service -> mapper.java -> mapper.xml

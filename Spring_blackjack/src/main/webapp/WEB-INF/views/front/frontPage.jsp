@@ -8,10 +8,6 @@ pageEncoding="UTF-8"%>
 	<link rel="stylesheet" href="resources/css/frontPage.css"  type="text/css" />
 	<title>초기 페이지</title>
 	
-	<script language="javascript">
-		function loginFailPopUp() { window.open("08_2_popup.html", "a", "width=400, height=300, left=100, top=50"); }
-	</script>
-	
 </head>
 <body>
 	<div class="header">
@@ -20,7 +16,7 @@ pageEncoding="UTF-8"%>
 	
 	<div class="topnav">
 	<ul>
-  		<li><a class="active" href="/">Home</a></li>
+  		<li><a class="active" href="/"></a></li>
 		<li><a href="signUp.do">회원가입</a></li>
 		<li><a href="robby.do">QnA</a></li>
 		<li><a href="gameInfo.do">게임설명</a></li>

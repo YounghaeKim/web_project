@@ -19,7 +19,7 @@ pageEncoding="UTF-8"%>
 	
 	<div class="topnav">
 	<ul>
-  <li><a class="active" href="/">Home</a></li>
+  		<li><a class="active" href="/">Home</a></li>
 		<li><a href="signUp.do">회원가입</a></li>
 		<li><a href="robby.do">QnA</a></li>
 		<li><a href="gameInfo.do">게임설명</a></li>
@@ -51,10 +51,6 @@ pageEncoding="UTF-8"%>
 			<h4>회원가입일 
 			</h4><br>
 			<br><br>
-		
-			<button id="robby_button" type="button" onclick="location.href='robby.do' ">게임 생성</button>
-			<button id="cashCharging_button" type="button" onclick="location.href='cashCharging.do' ">캐쉬 충전</button>
-			
 		</div>
 	
 	   
@@ -63,17 +59,5 @@ pageEncoding="UTF-8"%>
 			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit..</p>
 		</div>
    </div>
-	
-	
-	<table>
-		<tr>
-			<th>Current cash</th>
-		</tr>
-		<c:forEach var="Customer" items="${listAllCustomer}">
-			<tr>
-				<td>${Customer.currentCash}</td>
-			</tr>
-		</c:forEach>
-	</table>
 </body>
 </html>
