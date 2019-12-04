@@ -4,7 +4,7 @@
 pageEncoding="UTF-8"%>
 <html>
 <head>
-	<link rel="stylesheet" href="resources/css/Header.css"  type="text/css" />
+	<link rel="stylesheet" href="resources/css/header.css"  type="text/css" />
 	<link rel="stylesheet" href="resources/css/frontPage.css"  type="text/css" />
 	<title>초기 페이지</title>
 	
@@ -14,19 +14,8 @@ pageEncoding="UTF-8"%>
 	
 </head>
 <body>
-	<div class="header">
-	<h1 style="color:#F2F2F0;">AICASINO</h1>
-	</div>
-	
-	<div class="topnav">
-	<ul>
-  		<li><a class="active" href="/">Home</a></li>
-		<li><a href="signUp.do">회원가입</a></li>
-		<li><a href="robby.do">QnA</a></li>
-		<li><a href="gameInfo.do">게임설명</a></li>
-		<li><a href="profile.do">개인정보</a></li>
-	</ul>
-	</div>
+
+	<%@include file="../includes/header.jsp"%>
 	
 	<div class="row">
 		<div class="column side">
@@ -39,12 +28,12 @@ pageEncoding="UTF-8"%>
 			<br><br>
 			<form name="loginCheck" method="post" action="loginCheck.do"><!-- 로그인 체크, 포스트 -->
 				<div class="textbox">
-					<label for="id">아이디</label> 
-					<input type="text" id="id" name="id">
+					<label for="id"></label> 
+					<input type="text" id="id" name="id" placeholder="아이디">
 				</div>
 				<div class="textbox">
-					<label for="password">패스워드</label> 
-					<input type="password" id="password" name="password">
+					<label for="password"></label> 
+					<input type="password" id="password" name="password" placeholder="패스워드">
 				</div>
 			<c:if test="${msg == 'loginFail'}">
 				<script>
