@@ -5,7 +5,7 @@ pageEncoding="UTF-8"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <html>
 <head>
-	<link rel="stylesheet" href="resources/css/Header.css"  type="text/css" />
+	<link rel="stylesheet" href="resources/css/header.css"  type="text/css" />
 	<link rel="stylesheet" href="resources/css/profilePage.css"  type="text/css" />
 <head>
 	<title>프로필</title>
@@ -13,19 +13,7 @@ pageEncoding="UTF-8"%>
 <body>
 	
 	
-	<div class="header">
-	<h1 style="color:#F2F2F0;">개인 프로필</h1>
-	</div>
-	
-	<div class="topnav">
-	<ul>
-  <li><a class="active" href="/">Home</a></li>
-		<li><a href="signUp.do">회원가입</a></li>
-		<li><a href="robby.do">QnA</a></li>
-		<li><a href="gameInfo.do">게임설명</a></li>
-		<li><a href="profile.do">개인정보</a></li>
-	</ul>
-	</div>
+	<%@include file="../includes/header.jsp"%>
 	  	
 	  	<div class="row">
 	  	<div class="column side">
