@@ -55,6 +55,7 @@
 
 .textbox {
 	position: relative; 
+	width: 80%; 
 	margin: 15px
 }
 
