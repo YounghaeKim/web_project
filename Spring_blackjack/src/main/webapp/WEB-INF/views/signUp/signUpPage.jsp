@@ -28,8 +28,8 @@ pageEncoding="UTF-8"%>
 					<table>
 						<tr>
 							<td style='width: 100px'>아이디</td>
-							<td><input type="text" size=25 name="userNM" value="">
-							<input type="button" id="id" name="id" value="중복체크"></td>
+							<td><input type="text" size=25 id="id" name="id">
+							<input type="button"  value="중복체크"></td>
 						</tr>
 						<tr>
 							<td>비밀번호</td>
