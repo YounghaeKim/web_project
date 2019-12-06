@@ -44,6 +44,12 @@ pageEncoding="UTF-8"%>
 			<button id="login_button" type=submit>로그인</button>
 	    	</div>
 			</form>
+			
+			
+	    	<div id="robby">
+			<button id="robby_button" type="button" onclick="location.href='signUp.do' ">회원가입</button>
+	    	</div>
+	    	
 	  	</div>
 	  	
 	  	

@@ -8,4 +8,5 @@ public interface UserMapper {
 	public List<UserVO> getAllBoard();
 	public UserVO findUser(UserVO findingUser);
 	public UserVO loginRequest(UserVO logInRequestSession);
+	public void signUpRequest(UserVO signUpRequestUser);
 }
