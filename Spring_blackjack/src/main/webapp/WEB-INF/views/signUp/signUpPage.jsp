@@ -24,7 +24,7 @@ pageEncoding="UTF-8"%>
 		  -->
 			<div class="container">
 				<h2 style="color:#454194;">MEMBERSHIP</h2>
-				<form name="SignUp" method="post" action="memberSingUp.do"><!-- 회원가입, 포스트 -->
+				<form name="SignUp" method="post" action="memberSingUp.do"><!-- 회원가입, 포스트 수정했어요-->
 					<table>
 						<tr>
 							<td style='width: 100px'>아이디</td>
