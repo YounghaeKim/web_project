@@ -15,6 +15,7 @@ public class CashChargingController {
 	
 	@Autowired
 	private CashChargingService boardService;//서비스에 연결시킨다.
+	
 	@RequestMapping("/cashCharging.do")
 	public String listAllBoard(Model model) {
 		List<UserVO> listAllBoard = boardService.getAllBoard();
