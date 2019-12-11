@@ -47,6 +47,8 @@ pageEncoding="UTF-8"%>
 						</tr>
 						<tr>
 							<td>비밀번호</td>
+							
+							
 							<td><input type="password" size=37 name="Password"></td>
 						</tr>
 						<tr>
