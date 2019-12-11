@@ -34,7 +34,8 @@ pageEncoding="UTF-8"%>
 
 		<div class="column middle">
 			<!--
-		<img alt="casino" src="resources/img/main.png" style="width:100% 수정">
+		<img alt="casino" src="resources/img/main.png" style="width:100% 수정  
+		">
 		  -->
 			<div class="container">
 				<h2 style="color:#454194;">MEMBERSHIP</h2>
