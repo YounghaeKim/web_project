@@ -55,7 +55,7 @@
 
 .textbox {
 	position: relative; 
-	width: 80%; 
+	width: 240px; 
 	margin: 15px
 }
 
@@ -91,23 +91,6 @@
   .column.side, .column.middle {
     width: 100%;
   }
-}
-
-#robby button { 
-  border-radius: 5px;
-  background-color: #87e1e9;
-  color: #ffffff; 
-  border: 2px solid #477c96;
-  height: 30px;
-  width: 100px;
-  font-weight: bolder;
-  margin-top: 20%;
-   
-} 
-
-#robby button:hover{ 
-  background-color: #9a438f;
-  color: white;
 }
 
 

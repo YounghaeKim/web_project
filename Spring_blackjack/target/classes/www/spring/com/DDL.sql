@@ -9,7 +9,7 @@ create table CUSTOMER (
     PHONE_NUMBER    	VARCHAR2(100) not null,
     EMAIL           	VARCHAR2(200) not null,
     NAME           		VARCHAR2(20) not null,
-    GENDER          	VARCHAR2(10) not null,
+    GENDER          	VARCHAR2(4) not null,
     CURRENT_CASH   		NUMBER(30) default 0,
     TOTAL_AMOUNT   	    NUMBER(30) default 0,
     WIN_RATE        	NUMBER(3) default 0,

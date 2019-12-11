@@ -5,7 +5,7 @@ pageEncoding="UTF-8"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <html>
 <head>
-	<link rel="stylesheet" href="resources/css/header.css"  type="text/css" />
+	<link rel="stylesheet" href="resources/css/Header.css"  type="text/css" />
 	<link rel="stylesheet" href="resources/css/profilePage.css"  type="text/css" />
 <head>
 	<title>프로필</title>
@@ -13,7 +13,19 @@ pageEncoding="UTF-8"%>
 <body>
 	
 	
-	<%@include file="../includes/header.jsp"%>
+	<div class="header">
+	<h1 style="color:#F2F2F0;">개인 프로필</h1>
+	</div>
+	
+	<div class="topnav">
+	<ul>
+  		<li><a class="active" href="/">Home</a></li>
+		<li><a href="signUp.do">회원가입</a></li>
+		<li><a href="robby.do">QnA</a></li>
+		<li><a href="gameInfo.do">게임설명</a></li>
+		<li><a href="profile.do">개인정보</a></li>
+	</ul>
+	</div>
 	  	
 	  	<div class="row">
 	  	<div class="column side">
@@ -25,47 +37,19 @@ pageEncoding="UTF-8"%>
 			<!--
 		<img alt="casino" src="resources/img/main.png" style="width:100%">
 		  -->
-		 	<h2>보유금액 ${currentUser.currentCash}</h2><br>
-		 	<h4>고유번호 ${currentUser.customerNumber}</h4><br>
-		 	<!-- 버튼 클릭시 내용물이 사라지고 인풋 텍스트 박스로 변경 
-		 	동적 삭제 동적 추가-->
-		 	<form action="changeProfile.do">
-				<h4>
-					프로필
-					<button id="button" type=submit>프로필 변경</button>
-				</h4><br>
-				<h4>
-					아이디 &nbsp;
-					<button id="button" type=submit>아이디 변경</button>
-					${currentUser.id}
-				</h4><br>
-				<h4>
-					비밀번호&nbsp;
-					<button id="login_button" type=submit>비밀번호 변경</button>
-					${currentUser.password}
-				</h4><br>
-				<h4>
-					전화번호 &nbsp;
-					<button id="login_button" type=submit>전화번호 변경</button>
-					${currentUser.phoneNumber}
-				</h4><br>
-				<h4>
-					이메일 ${currentUser.email}&nbsp;
-					<button id="login_button" type=submit>이메일 변경</button>
-				</h4><br>
-				<h4>
-					이름 &nbsp;
-					<button id="login_button" type=submit>이름 변경</button>
-					${currentUser.name}
-				</h4><br>
-				<h4>
-					성별 &nbsp;
-					<button id="login_button" type=submit>성별 변경</button>
-					${currentUser.gender}
-				</h4><br>
-				<button id="login_button" type=submit>개인정보 변경</button>
-			</form>
-
+		 
+			<h2>프로필</h2><br>
+			
+			<h4>고유번호 ${currentUser.customerNumber}</h4><br>
+			<h4>아이디 ${currentUser.id}</h4><br>
+			<h4>패스워드 ${currentUser.password}</h4><br>
+			<h4>전화번호 ${currentUser.phoneNumber}</h4><br>
+			<h4>이메일 ${currentUser.email}</h4><br>
+			<h4>이름 ${currentUser.name}</h4><br>
+			<h4>성별 ${currentUser.gender}</h4><br>
+			<h4>보유금액 ${currentUser.currentCash}</h4><br>
+			<h4>회원가입일 
+			</h4><br>
 			<br><br>
 		</div>
 	

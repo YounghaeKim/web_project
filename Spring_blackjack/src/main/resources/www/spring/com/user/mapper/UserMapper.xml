@@ -26,7 +26,6 @@
 		]]>
 		<!-- 로그인 중인 아이디로 유저 객체 생성 -->
 	</select>
-	
 		
 	<!-- 유저 객체 생성 -->
 	<resultMap id="UserInfo"
@@ -44,14 +43,5 @@
 		<result property="registrationDate" column="REGISTRATION_DATE" />
 	</resultMap>
 	
-	<insert id="signUpRequest">
-		<!-- 순수 SQL문으로만 인식해라 연산이 들어갈 경우 -->
-		<![CDATA[
-			insert into CUSTOMER (CUSTOMER_NUMBER, ID, PASSWORD, PHONE_NUMBER, EMAIL, NAME, GENDER, 
-				CURRENT_CASH)
-			values (seq_board.nextval, #{id,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{phoneNumber,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{gender,jdbcType=VARCHAR}, '100')
-		]]>
-		<!-- 회원가입 기본지급액 100000 데이터베이스로 전달 -->
-	</insert>
 	
 </mapper>

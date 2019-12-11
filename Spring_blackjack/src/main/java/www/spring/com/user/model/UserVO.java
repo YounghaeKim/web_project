@@ -22,7 +22,7 @@ public class UserVO {
 		int result = 1;
 		result = prime * result + customerNumber;
 		return result;
-	} //
+	}
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -35,7 +35,7 @@ public class UserVO {
 		if (customerNumber != other.customerNumber)
 			return false;
 		return true;
-	} //set할때 중복 검사 한다. 
+	}
 	public int getCustomerNumber() {
 		return customerNumber;
 	}
