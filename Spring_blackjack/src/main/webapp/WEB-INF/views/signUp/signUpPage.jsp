@@ -27,7 +27,7 @@ pageEncoding="UTF-8"%>
 				<form name="SignUp" method="post" action="memberSingUp.do"><!-- 회원가입, 포스트 -->
 					<table>
 						<tr>
-							<td style='width: 100px'>아이디</td>
+							<td style='width: 100px'>아이디ㅁㄴㅇㄹ</td>
 							<td><input type="text" size=25 id="id" name="id">
 							<input type="button"  value="중복체크"></td>
 						</tr>
