@@ -33,6 +33,32 @@
          <artifactId>spring-webmvc</artifactId>
          <version>${org.springframework-version}</version>
       </dependency>
+      
+      <!-- Security -->
+      <!-- https://mvnrepository.com/artifact/org.springframework.security/spring-security-web -->
+		<dependency>
+		    <groupId>org.springframework.security</groupId>
+		    <artifactId>spring-security-web</artifactId>
+		    <version>5.2.1.RELEASE</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.springframework.security/spring-security-config -->
+		<dependency>
+		    <groupId>org.springframework.security</groupId>
+		    <artifactId>spring-security-config</artifactId>
+		    <version>5.2.1.RELEASE</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.springframework.security/spring-security-core -->
+		<dependency>
+		    <groupId>org.springframework.security</groupId>
+		    <artifactId>spring-security-core</artifactId>
+		    <version>5.2.1.RELEASE</version>
+		</dependency>
+            <!-- https://mvnrepository.com/artifact/org.springframework.security/spring-security-taglibs -->
+		<dependency>
+		    <groupId>org.springframework.security</groupId>
+		    <artifactId>spring-security-taglibs</artifactId>
+		    <version>5.2.1.RELEASE</version>
+		</dependency>
             
       <!-- AspectJ -->
       <dependency>
@@ -77,6 +103,13 @@
          <version>1.18.10</version>
          <scope>provided</scope>
       </dependency>
+      
+      <!-- jackson -->
+		<dependency>
+		    <groupId>com.fasterxml.jackson.core</groupId>
+		    <artifactId>jackson-databind</artifactId>
+		    <version>2.10.1</version>
+		</dependency>
 
 
       <!-- Logging -->
@@ -127,6 +160,13 @@
          </exclusions>
          <scope>runtime</scope>
       </dependency>
+      
+      <!-- fileupload -->
+		<dependency>
+		    <groupId>commons-fileupload</groupId>
+		    <artifactId>commons-fileupload</artifactId>
+		    <version>1.4</version>
+		</dependency>
 
       <!-- @Inject -->
       <dependency>
@@ -139,7 +179,7 @@
    <dependency>
       <groupId>javax.servlet</groupId>
          <artifactId>javax.servlet-api</artifactId>
-         <version>3.0.1</version>
+         <version>3.1.0</version>
          <scope>provided</scope>
       </dependency>
       <dependency>
@@ -153,7 +193,7 @@
          <artifactId>jstl</artifactId>
          <version>1.2</version>
    </dependency>         
-   
+		
       
       <!-- Test -->
       <dependency>
