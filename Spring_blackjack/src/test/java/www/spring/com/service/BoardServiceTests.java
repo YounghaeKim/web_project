@@ -28,10 +28,11 @@ public class BoardServiceTests {
 		assertNotNull(service);
 	}
 	
-	//@Test
+	@Test
 	public void testRegister() {
 		
 		BoardVO board = new BoardVO();
+		
 		board.setTitle("새로 작성하는 글");
 		board.setContent("새로 작성하는 내용들");
 		board.setWriter("newbie");
@@ -57,12 +58,12 @@ public class BoardServiceTests {
 	//@Test
 	public void testDelete() {
 		//게시물의 번호의 존재 여부를 확인하고 테스트 할것
-		log.info("REMOVE RESULT: " + service.remove(2L));
+		log.info("REMOVE RESULT: " + service.remove(16L));
 	}
 	
-	@Test
+	//@Test
 	public void testUpdate() {
-		BoardVO board = service.get(1L);
+		BoardVO board = service.get(2L);
 		
 		if (board == null) {
 			return;

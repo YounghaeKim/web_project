@@ -19,14 +19,14 @@
 	</insert>
 	
 	<insert id="insertSelectKey">
-		<!-- MyBatis의 어노테이션 PK값을 미리 SQL을 통해서 처리해 두고 특정한 이름오로 결과를 보관하는 방식 -->
+		<!-- MyBatis의 어노테이션 PK값을 미리 SQL을 통해서 처리해 두고 특정한 이름으로 결과를 보관하는 방식 -->
 		<selectKey keyProperty="bno" order="BEFORE"
 			resultType="long">
 			select seq_qnaboard.nextval from dual	
 		</selectKey>
 		
 		insert into qna_board (bno, title, content, writer)
-		values (seq_qnaboard.nextval, #{title}, #{content}, #{writer})
+		values (#{bno}, #{title}, #{content}, #{writer})
 	</insert>
 	
 	<select id="read" resultType="www.spring.com.board.model.BoardVO">
