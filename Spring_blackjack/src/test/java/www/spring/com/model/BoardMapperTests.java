@@ -61,7 +61,7 @@ public class BoardMapperTests {
 		
 	}
 	
-	@Test
+	//@Test
 	public void testUpdate() {
 		
 		BoardVO board = new BoardVO();

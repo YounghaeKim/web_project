@@ -26,26 +26,29 @@ public class BoardServiceImpl implements BoardService {
 
 	@Override
 	public BoardVO get(Long bno) {
-		// TODO Auto-generated method stub
-		return null;
+
+		System.out.println("get테스트 입니다. :" + bno);
+		return mapper.read(bno);
 	}
 
 	@Override
-	public boolean modify(BoardVO board) {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean modify(BoardVO board) { //수정하다
+
+		System.out.println("modify테스트 입니다. : " + board);
+		return mapper.update(board) == 1;
 	}
 
 	@Override
 	public boolean remove(Long bno) {
-		// TODO Auto-generated method stub
-		return false;
+		
+		System.out.println("remove테스트 입니다. :" + bno );
+		return mapper.delete(bno) == 1;
 	}
 
 	@Override
 	public List<BoardVO> getList() {
-		// TODO Auto-generated method stub
-		return null;
+		System.out.println("getList...............");
+		return mapper.getList();
 	}
 
 }

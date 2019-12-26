@@ -21,14 +21,14 @@ public class BoardServiceTests {
 	@Setter(onMethod=@__({@Autowired}))
 	private BoardService service;
 	
-	@Test
+	//@Test
 	public void testExist() {
 		
 		log.info(service);
 		assertNotNull(service);
 	}
 	
-	@Test
+	//@Test
 	public void testRegister() {
 		
 		BoardVO board = new BoardVO();
@@ -40,5 +40,36 @@ public class BoardServiceTests {
 		
 		log.info("생성된 게시물의 번호: " + board.getBno());
 		
+	}
+	
+	//@Test
+	public void testGetList() {
+		
+		service.getList().forEach(board -> log.info(board));
+	}
+	
+	//@Test
+	public void testGet() {
+		
+		log.info(service.get(1L));
+	}
+	
+	//@Test
+	public void testDelete() {
+		//게시물의 번호의 존재 여부를 확인하고 테스트 할것
+		log.info("REMOVE RESULT: " + service.remove(2L));
+	}
+	
+	@Test
+	public void testUpdate() {
+		BoardVO board = service.get(1L);
+		
+		if (board == null) {
+			return;
+		}
+		
+		board.setTitle("제목 수정합니다.");
+		board.setWriter("작성자 수정요");
+		log.info("MODIFYRESULT: " + service.modify(board));
 	}
 }
