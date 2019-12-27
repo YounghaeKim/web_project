@@ -16,7 +16,7 @@ import www.spring.com.user.model.UserVO;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("file:src/main/webapp/WEB-INF/spring/root-context.xml")
 @Log4j
-public class BoardMapperTest {
+public class UserMapperTest {
 
 	@Autowired
 	private SqlSessionFactory sqlSessionFactory;
