@@ -4,8 +4,8 @@
 pageEncoding="UTF-8"%>
 <html>
 <head>
-	<link rel="stylesheet" href="resources/css/header.css"  type="text/css" />
-	<link rel="stylesheet" href="resources/css/gameInfoPage.css"  type="text/css" />
+	<link rel="stylesheet" href="/resources/css/header.css"  type="text/css" />
+	<link rel="stylesheet" href="/resources/css/gameInfoPage.css"  type="text/css" />
 	<title>게임설명</title>
 </head>
 <body>

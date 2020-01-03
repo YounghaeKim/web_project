@@ -4,8 +4,8 @@
 pageEncoding="UTF-8"%>
 <html>
 <head>
-	<link rel="stylesheet" href="resources/css/header.css"  type="text/css" />
-	<link rel="stylesheet" href="resources/css/frontPage.css"  type="text/css" />
+	<link rel="stylesheet" href="/resources/css/header.css"  type="text/css" />
+	<link rel="stylesheet" href="/resources/css/frontPage.css"  type="text/css" />
 	<title>초기 페이지</title>
 	
 	<script language="javascript">

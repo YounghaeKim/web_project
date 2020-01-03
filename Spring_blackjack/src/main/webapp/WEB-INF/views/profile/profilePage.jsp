@@ -5,8 +5,8 @@ pageEncoding="UTF-8"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <html>
 <head>
-   <link rel="stylesheet" href="resources/css/header.css"  type="text/css" />
-   <link rel="stylesheet" href="resources/css/profilePage.css"  type="text/css" />
+   <link rel="stylesheet" href="/resources/css/header.css"  type="text/css" />
+   <link rel="stylesheet" href="/resources/css/profilePage.css"  type="text/css" />
 <head>
    <title>프로필</title>
 </head>
