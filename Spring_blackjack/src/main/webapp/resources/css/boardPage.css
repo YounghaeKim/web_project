@@ -161,10 +161,11 @@
 .btn-default {
   background-color: white;
   color: black;
-  border: 2px solid #e7e7e7;
+  border: 2px solid black;
 }
 .btn-default:hover {
-  background-color: #e7e7e7;
+  background-color: black;
+  color: white;
 }
 
 .btn-info {
@@ -177,25 +178,38 @@
 	background-color: #008CBA;
 	color: white;
 }
+
+.btn-danger {
+	background-color: #ff8040; 
+	color: black;  
+	border: 2px solid #ff8040;
+}
+
+.btn-danger:hover {
+	background-color: #ff8040;
+	color: white;
+}
+
+
 #regBtn {
 	float: right;
 }
 /* 링크 밑줄 없애기*/
-a:link {
+#customers a:link {
   text-decoration: none;
   color: #000000;
 }
 
-a:visited {
+#customers a:visited {
   text-decoration: none;
   color: #797979;
 }
 
-a:hover {
+#customers a:hover {
   text-decoration: underline;
 }
 
-a:active {
+#customers a:active {
   text-decoration: underline;
 }
 /* 링크 밑줄 없애기*/

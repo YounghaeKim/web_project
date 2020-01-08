@@ -86,9 +86,11 @@ $(document).ready(
     
     checkModal(result);
     
+    history.replaceState({},null,null);
+    
     function checkModal(result) {
        
-       if (result === '') {
+       if (result === '' || history.state) {
          return;
       }
        if (parseInt(result) > 0) {
