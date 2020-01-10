@@ -21,12 +21,12 @@
 		</div>
 
 		<div class="column middle">
-			<h1 style="color:#0B3B2E; font-family:verdana;">Q&A Board Register</h1>
+			<h1 style="color:#0B3B2E; font-family:verdana;">Q&A Board Modify</h1>
 			<!--
 		<img alt="casino" src="resources/img/main.png" style="width:100%">
 		  -->
 			  <div class="panel-default">
-			  	<div class="panel-head">질문 상세 게시판</div>
+			  	<div class="panel-head" style="color: red">게시판 수정</div>
 			  
 				  <div class="panel-body">
 				  <form role="form" action="/board/modify" method="post">
@@ -42,7 +42,7 @@
 						
 						<div class="form-group">
 							<label>내용</label>
-							<textarea class="form-control" rows="3" name='content' ><c:out value="${board.content}" /></textarea>
+							<textarea class="form-control" rows="7" name='content' ><c:out value="${board.content}" /></textarea>
 						</div>			
 						
 						<div class="form-group">
@@ -93,9 +93,10 @@ $(document).ready(
 			 formObj.attr("action", "/board/remove");
 		} else if (operation === "list"){
 			//move to list
-			self.location = "/board/list";
-			return;
+			formObj.attr("action", "/board/list").attr("method","get");
+			formObj.empty();
 		}
+		 
 		 formObj.submit();
 	 
 	 });

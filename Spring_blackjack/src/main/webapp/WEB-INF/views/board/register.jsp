@@ -36,7 +36,7 @@
 						
 						<div class="form-group">
 							<label>내용</label>
-							<textarea class="form-controller" rows="3" name='content'></textarea>
+							<textarea class="form-controller" rows="7" name='content'></textarea>
 						</div>			
 						
 						<div class="form-group">
