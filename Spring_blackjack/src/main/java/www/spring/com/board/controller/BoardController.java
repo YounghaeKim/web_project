@@ -10,6 +10,8 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import lombok.AllArgsConstructor;
 import www.spring.com.board.model.BoardVO;
+import www.spring.com.board.model.Criteria;
+import www.spring.com.board.model.PageDTO;
 import www.spring.com.board.service.BoardService;
 /**
  * BoardController 는 BoardService에 의존적이므로
@@ -24,11 +26,21 @@ public class BoardController {
 		
 	private BoardService service;
 	
+	/*
 	@GetMapping("/list")
 	public void list(Model model) { //model을 파라미터로 지정하고 view로 넘겨준다.
 		System.out.println("list");
 		
 		model.addAttribute("list", service.getList());
+	}
+	*/
+	
+	@GetMapping("/list")
+	public void list(Criteria cri, Model model) { //model을 파라미터로 지정하고 view로 넘겨준다.
+		
+		System.out.println("list: " + cri);
+		model.addAttribute("list", service.getList(cri));
+		model.addAttribute("pageMaker", new PageDTO(cri, 123));
 	}
 	
 	@PostMapping("/register")

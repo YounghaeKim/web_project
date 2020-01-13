@@ -9,6 +9,7 @@ import lombok.AllArgsConstructor;
 import lombok.Setter;
 import www.spring.com.board.mapper.BoardMapper;
 import www.spring.com.board.model.BoardVO;
+import www.spring.com.board.model.Criteria;
 
 @Service
 @AllArgsConstructor
@@ -44,11 +45,19 @@ public class BoardServiceImpl implements BoardService {
 		System.out.println("remove테스트 입니다. :" + bno );
 		return mapper.delete(bno) == 1;
 	}
-
+/*
 	@Override
 	public List<BoardVO> getList() {
 		System.out.println("getList...............");
 		return mapper.getList();
+	}
+*/
+	@Override
+	public List<BoardVO> getList(Criteria cri) {
+		
+		System.out.println("get List With Criteria: " + cri);
+		
+		return mapper.getListWithPaging(cri);
 	}
 
 }
