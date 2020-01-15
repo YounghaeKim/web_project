@@ -14,7 +14,7 @@ CREATE TABLE qna_board(
 	updateDate	date	default sysdate
 );
 
-alter table qna_board add constraint pk_board
+alter table qna_board add constraint pk_qna_board
 primary key(bno);
 
 insert into qna_board (bno, title, content, writer)
