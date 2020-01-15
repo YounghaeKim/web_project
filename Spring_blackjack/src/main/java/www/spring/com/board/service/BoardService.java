@@ -13,5 +13,6 @@ public interface BoardService {
 	public boolean remove(Long bno); //특정한 게시물 지우다
 	//public List<BoardVO> getList(); //전체 게시물 가져오기
 	public List<BoardVO> getList(Criteria cri); //페이지처리 게시물 가져오기
+	public int getTotal(Criteria cri);//전체 데이터 갯수 가져오기
 	
 }

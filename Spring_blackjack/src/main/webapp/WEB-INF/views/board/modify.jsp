@@ -63,6 +63,12 @@
 						<button type="submit" data-oper="modify" class="btn btn-default">수정</button>
 						<button type="submit" data-oper="remove" class="btn btn-danger">삭제</button>
 						<button type="submit" data-oper="list" class="btn btn-info">리스트</button>
+					
+					
+						<!-- 수정과 삭제처리  -->
+						<input type="hidden" name="pageNum" value="<c:out value='${cri.pageNum}'/>">
+						<input type="hidden" name="amount" value="<c:out value='${cri.amount}'/>">
+						<!-- 수정과 삭제처리 END -->
 					</form>
 				</div>	 
 			</div>
@@ -94,7 +100,13 @@ $(document).ready(
 		} else if (operation === "list"){
 			//move to list
 			formObj.attr("action", "/board/list").attr("method","get");
+			var pageNumTag = $("input[name='pageNum']").clone();
+			var amountTag = $("input[name='amount']").clone();
+			
 			formObj.empty();
+			formObj.append(pageNumTag);
+			formObj.append(amountTag);
+			
 		}
 		 
 		 formObj.submit();

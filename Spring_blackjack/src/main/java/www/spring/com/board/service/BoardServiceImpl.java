@@ -31,6 +31,13 @@ public class BoardServiceImpl implements BoardService {
 		System.out.println("get테스트 입니다. :" + bno);
 		return mapper.read(bno);
 	}
+	
+	@Override
+	public int getTotal(Criteria cri) {
+		
+		System.out.println("get total count");
+		return mapper.getTotalCount(cri);
+	}
 
 	@Override
 	public boolean modify(BoardVO board) { //수정하다
