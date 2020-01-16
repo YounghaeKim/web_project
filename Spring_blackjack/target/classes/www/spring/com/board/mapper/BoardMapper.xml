@@ -61,6 +61,7 @@
 			
 	bno > 0
 	</select>
+	<!-- 체크 바람 -->
 	
 	<insert id="insert">
 			<![CDATA[
