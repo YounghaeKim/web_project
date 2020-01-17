@@ -2,8 +2,8 @@
 
    <div class="header">
    <h1 style="color:#F2F2F0;">
-      <span>A</span>
-      <span>I</span>
+      <span>A.</span>
+      <span>I.</span>
       <span>C</span>
       <span>A</span>
       <span>S</span>
@@ -15,10 +15,10 @@
    
    <div class="topnav">
       <ul>
-           <li><a class="/active" href="/">Home</a></li>
-         <li><a href="/signUp.do">회원가입</a></li>
+         <li><a class="/active" href="/">Home</a></li>
+         <li><a href="/signUp.do">Sign Up</a></li>
          <li><a href="/board/list">QnA</a></li>
-         <li><a href="/gameInfo.do">게임설명</a></li>
-         <li><a href="/profile.do">개인정보</a></li>
+         <li><a href="/gameInfo.do">Information</a></li>
+         <li><a href="/profile.do">Profile</a></li>
       </ul>
    </div>

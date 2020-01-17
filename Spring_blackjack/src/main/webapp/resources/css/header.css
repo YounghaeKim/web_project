@@ -1,6 +1,9 @@
 @charset "UTF-8";
 
 /* Style the header */
+
+
+
 .header {
    background-color: black;
    padding: 10px;
@@ -8,6 +11,7 @@
    text-color: #FFFFFF;
    font-size: 30px;
    letter-spacing: 7px;
+   font-family: 'Playfair Display', serif;
 }
 
 video {
@@ -107,10 +111,11 @@ ul {
   margin: 0;
   padding: 0;
   overflow: hidden;
-  background-color: #945848;
+  background-color: #9055A2;
   position: -webkit-sticky; /* Safari */
   position: sticky;
   top: 0;
+  align: center;
 }
 
 li {
@@ -126,6 +131,6 @@ li a {
 }
 
 li a:hover {
-  background-color: #C3D442;
+  background-color: #D499B9;
   
 }
