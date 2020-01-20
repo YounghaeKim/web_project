@@ -17,3 +17,8 @@ alter table qna_reply add CONSTRAINT pk_qna_reply primary key (rno);
 alter TABLE qna_reply add CONSTRAINT fk_reply_qna_board
 FOREIGN key (bno) REFERENCES qna_board (bno);
 
+--테스트
+
+SELECT
+    *
+FROM qna_board where rownum < 10 ORDER BY bno desc;
