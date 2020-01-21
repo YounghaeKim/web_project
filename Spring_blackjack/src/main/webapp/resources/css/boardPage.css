@@ -213,3 +213,17 @@
   text-decoration: underline;
 }
 /* 링크 밑줄 없애기*/
+
+.pull-right ul{
+	width: 100%;
+	margin-left: auto;
+	margin-right: auto;
+	background-color: black;
+	position: static;
+	overflow: auto;
+	text-align: center;
+}
+.pull-right ul li {
+  float: none;
+  display: inline-block; 
+}

@@ -19,7 +19,7 @@ public class ProfileController {
 	//@Autowired
 	//private ProfileService profileService;//서비스에 연결시킨다.
 	
-	@RequestMapping("/profile.do")
+	@RequestMapping("/member/profile.do")
 	public String getCurrentUserInfo(HttpSession session, Model model) {
 		//세션에 저장된 유저 넘버로 개인정보를 가져온다.\
 		model.addAttribute("currentUser", (UserVO) session.getAttribute("sessionUser"));

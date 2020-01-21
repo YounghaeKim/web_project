@@ -22,3 +22,8 @@ FOREIGN key (bno) REFERENCES qna_board (bno);
 SELECT
     *
 FROM qna_board where rownum < 10 ORDER BY bno desc;
+
+SELECT
+    *
+FROM qna_reply ORDER BY rno desc;
+--여기가운데는 테스트 용이니 디비 실행하지 말것

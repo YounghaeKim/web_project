@@ -29,5 +29,8 @@ insert into CUSTOMER (CUSTOMER_NUMBER, ID, PASSWORD, PHONE_NUMBER, EMAIL, NAME, 
 values (seq_board.nextval, 'newID', 'newPassword','newPoneNum', 'newEmail', 'newName', 'male', '100', '1000', '0');
 
 
-create table tbl_board(
+create table CUSTOMER_AUTH (
+   CUSTOMER_NUMBER      NUMBER(10) not null,
+   AUTH      varchar2(50) not null,
+   constraint fk_customer_auth foreign key(CUSTOMER_NUMBER) references CUSTOMER(CUSTOMER_NUMBER)
 );

@@ -6,11 +6,13 @@
       http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd">
 
    <security:http>
-      <security:form-login/>
-      <security:csrf disabled="true"/>
+      <!-- /member/* 로 시작하는 매핑은 멤버 권한 이상이 필요하다. -->
+      <security:intercept-url pattern = "/member/*" access = "hasRole('ROLE_MEMBER')"/>
+      <!-- 로그인 페이지 -->
+      <security:form-login login-page = "/"/>
+      <security:csrf disabled = "true"/>
    </security:http>
    
    <security:authentication-manager>
    </security:authentication-manager>
-
 </beans>

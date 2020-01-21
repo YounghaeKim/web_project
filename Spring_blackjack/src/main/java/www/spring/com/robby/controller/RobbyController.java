@@ -16,7 +16,7 @@ public class RobbyController {
 	@Autowired
 	private RobbyService boardService;//서비스에 연결시킨다.
 	
-	@RequestMapping("/robby.do")
+	@RequestMapping("/member/robby.do")
 	public String listAllBoard(Model model) {
 		List<UserVO> listAllBoard = boardService.getAllBoard();
 		model.addAttribute("listAllCustomer", listAllBoard);
