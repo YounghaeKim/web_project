@@ -218,7 +218,7 @@
 	width: 100%;
 	margin-left: auto;
 	margin-right: auto;
-	background-color: black;
+	background-color: #8080c0; 
 	position: static;
 	overflow: auto;
 	text-align: center;
@@ -226,4 +226,23 @@
 .pull-right ul li {
   float: none;
   display: inline-block; 
+}
+
+.panel-body small {
+   display: inline;
+   overflow: auto;
+   margin-left: auto; 
+    margin-right: auto;
+    text-align: left;
+    float: none;
+}
+
+
+
+.panel-head2 {
+   background-color: white;
+}
+
+.panel-body ul {
+   background-color: white;
 }

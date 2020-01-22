@@ -30,24 +30,24 @@
 			  
 				  <div class="panel-body">
 						<div class="form-group">
-							<label>Bno</label> <input class="form-control" name="bno"
-							value='<c:out value="${board.bno}"/>' readonly="readonly">
-						</div>
-						
-						<div class="form-group">
-							<label>제목</label> <input class="form-control" name="title"
-							value='<c:out value="${board.title}"/>' readonly="readonly">
-						</div>
-						
-						<div class="form-group">
-							<label>내용</label>
-							<textarea class="form-control" rows="7" name='content' readonly="readonly"><c:out value="${board.content}" /></textarea>
-						</div>			
-						
-						<div class="form-group">
-							<label>작성자</label> <input class="form-control" name="writer"
-							value='<c:out value="${board.writer}"/>' readonly="readonly">
-						</div>
+		                     <label><strong>Bno</strong></label> <input class="form-control" name="bno"
+		                     value='<c:out value="${board.bno}"/>' readonly="readonly">
+		                  </div>
+		                  
+		                  <div class="form-group">
+		                     <label><strong>제목</strong></label> <input class="form-control" name="title"
+		                     value='<c:out value="${board.title}"/>' readonly="readonly">
+		                  </div>
+		                  
+		                  <div class="form-group">
+		                     <label><strong>내용</strong></label>
+		                     <textarea class="form-control" rows="7" name='content' readonly="readonly"><c:out value="${board.content}" /></textarea>
+		                  </div>         
+		                  
+		                  <div class="form-group">
+		                     <label><strong>작성자</strong></label> <input class="form-control" name="writer"
+		                     value='<c:out value="${board.writer}"/>' readonly="readonly">
+		                  </div>
 						
 						<button data-oper="modify" class="btn btn-default">수정</button>
 						<button data-oper="list" class="btn btn-info">리스트</button>
@@ -62,6 +62,31 @@
 					
 				</div>	
 			</div>
+			<!-- end panel-default -->
+			
+			<!-- Start Reply -->
+			<div class="panel panel-default">
+				<div class="panel-head">
+					<i class="fa fa-comments fa-fw"></i> Reply
+				</div>
+			
+				<div class="panel-body">
+					
+					<ul class="chat">
+						<li class="left clearfix" data-rno='12'>
+							<div>
+								<div class="panel-head2">
+									<strong class="primary-font">user00</strong>
+									<small class="pull-right text-muted">2018-01-01 13:13</small>
+								</div>
+								<p>Good job!</p>
+							</div>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<!-- End Reply -->
+			
 		</div>
 	   
 	   <div class="column side">
@@ -72,7 +97,7 @@
    </div><!-- row End -->
 
 <script type="text/javascript" src="/resources/js/reply.js"></script>
-
+<!--  
 <script>
 
 console.log("=======================");
@@ -114,12 +139,37 @@ replyService.get(10, function(data){
 });
 
 </script>
+-->
 
-
-<script type="text/javascript">
+<script>
 $(document).ready(function() {
 	
-	console.log(replyService);
+	var bnoValue = '<c:out value="${board.bno}"/>';
+	var replyUL = $(".chat");
+	
+	showList(1);
+	
+	function showList(page) {
+		
+		replyService.getList({bno:bnoValue,page: page|| 1}, function(list) {
+			
+			var str="";
+			if (list == null || list.length == 0) {
+				replyUL.html("");
+				
+				return;
+			}
+			for (var i = 0,  len = list.length || 0; i <len; i++) {
+				str +="<li class='left clearfix' data-rno='"+list[i].rno+"'>";
+				str +="	<div><div class='panel-head2'><strong class='primary-font'>"+list[i].replyer+"</strong>";
+				str +="		<small class='pull-right text-muted'>"+list[i].replyDate+"</small></div>";
+				str +="		<p>"+list[i].reply+"</p></div></li>";
+			}
+			
+		replyUL.html(str);
+			
+		});//end function
+	}//end showList
 });
 </script>
 
