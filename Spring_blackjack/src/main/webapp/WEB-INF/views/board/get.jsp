@@ -7,7 +7,7 @@
 <head>
 	<script src="/resources/jQuery/jquery-3.4.1.min.js"></script>
 	<link rel="stylesheet" href="/resources/css/header.css"  type="text/css" />
-	<link rel="stylesheet" href="/resources/css/boardPage.css"  type="text/css" />
+	<link rel="stylesheet" href="/resources/css/getPage.css"  type="text/css" />
 	
 	<title>Board Register</title>
 </head>
@@ -66,9 +66,16 @@
 			
 			<!-- Start Reply -->
 			<div class="panel panel-default">
-				<div class="panel-head">
+				<!-- <div class="panel-head">
 					<i class="fa fa-comments fa-fw"></i> Reply
 				</div>
+				-->
+				<div class="panel-head">
+					<i class="fa fa-comments fa-fw"></i> Reply
+					<button id="addReplyBtn" class="btn btn-primary btn-xs pull-right">New Reply</button>
+				</div>
+			
+			
 			
 				<div class="panel-body">
 					
@@ -95,6 +102,49 @@
 		</div>
 		
    </div><!-- row End -->
+   
+   
+<!-- Modal Start -->
+<div class="modal hidden" id="myModal">
+	 <div class="modal_overlay"></div>
+	 <div class="modal_content">
+     <div class="modal-header">
+       <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times</button>
+      <h4 class="modal-title" id=myModalLabel>REPLY MODAL</h4>
+     </div>
+
+     <div class="modal-body">
+       <div class="form-group">
+         <label>REPLY</label>
+         <input class="form-control" name="reply" value="NewReply!!!!">
+       </div>
+
+       <div class="form-group">
+         <label>REPLYER</label>
+         <input class="form-control" name="replyer" value="replyer">
+       </div>
+
+       <div class="form-group">
+         <label>REPLY DATE</label>
+         <input class="form-control" name="replyDate" value="">
+       </div>
+
+     </div>
+	    
+
+
+    <div class="modal-footer">
+      <button id="modalModBtn" type="button" class="btn btn-warnig">Modify</button>
+      <button id="modalRemoveBtn" type="button" class="btn btn-danger">Remove</button>
+      <button id="modalRegisterBtn" type="button" class="btn btn-primary">Regiter</button>
+      <button id="modalCloseBtn" type="button" class="btn btn-default">Close</button>
+	  </div>
+   </div>
+ 
+  </div>
+
+<!-- Modal End -->
+
 
 <script type="text/javascript" src="/resources/js/reply.js"></script>
 <!--  
@@ -162,7 +212,7 @@ $(document).ready(function() {
 			for (var i = 0,  len = list.length || 0; i <len; i++) {
 				str +="<li class='left clearfix' data-rno='"+list[i].rno+"'>";
 				str +="	<div><div class='panel-head2'><strong class='primary-font'>"+list[i].replyer+"</strong>";
-				str +="		<small class='pull-right text-muted'>"+list[i].replyDate+"</small></div>";
+				str +="		<small class='pull-right text-muted'>"+replyService.displayTime(list[i].replyDate)+"</small></div>";
 				str +="		<p>"+list[i].reply+"</p></div></li>";
 			}
 			
@@ -170,6 +220,53 @@ $(document).ready(function() {
 			
 		});//end function
 	}//end showList
+	
+	var modal = $(".modal");
+	var modalInputReply = modal.find("input[name='reply']");
+	var modalInputReplyer = modal.find("input[name='replyer']");
+	var modalInputReplyDate = modal.find("input[name='replyDate']");
+	
+	var modalModBtn = $("#modalModBtn");
+	var modalRemoveBtn = $("#modalRemoveBtn");
+	var modalRegisterBtn = $("#modalRegisterBtn");
+	
+	
+	$("#addReplyBtn").on("click", function(e) {
+		
+		modal.find("input").val("");
+		modalInputReplyDate.closest("div").hide();
+		modal.find("button[id !='modalCloseBtn']").hide();		
+		
+		modalRegisterBtn.show();
+		
+		$(".modal").css("display","flex");
+	});
+	
+	 $("#modalCloseBtn").on("click", function(){
+		 $(".modal").css("display","none");
+	   });
+	
+	modalRegisterBtn.on("click",function(e){
+		
+		var reply = {
+				reply: modalInputReply.val(),
+				replyer: modalInputReplyer.val(),
+				bno:bnoValue
+			};
+		replyService.add(reply, function(result){
+			
+			alert(result);
+			
+			modal.find("input").val("");
+			$(".modal").css("display","none");
+			
+			showList(1);
+		});
+		
+		
+	});
+	
+	
 });
 </script>
 

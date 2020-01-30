@@ -159,7 +159,7 @@ $(document).ready(
           $(".content").html("게시글 " + parseInt(result) + " 번이 등록되었습니다." + "<br><br>");
       }
    
-       $('div').removeClass("hidden");
+       $(".modal").css("display","flex");
       
     }
    $(".modal_button").on("click", function(){
