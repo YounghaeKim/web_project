@@ -4,6 +4,9 @@ import lombok.Data;
 
 @Data
 public class AuthVO {
-   private int customerNumber;
-   private String auth;
+   public static final String ROLE_MEMBER = "ROLE_MEMBER";
+   public static final String ROLE_ADMIN = "ROLE_ADMIN";
+   
+    private int customerNumber;
+    private String auth;
 }

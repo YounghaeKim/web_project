@@ -224,10 +224,21 @@
 	position: static;
 	overflow: auto;
 	text-align: center;
+	font-family: Tahoma, Geneva, sans-serif;
 }
 .pull-right ul li {
   float: none;
   display: inline-block; 
+}
+.pull-right ul li a {
+   display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+.pull-right ul li a:hover {
+	background-color: #D499B9;
 }
 
 .panel-body small {

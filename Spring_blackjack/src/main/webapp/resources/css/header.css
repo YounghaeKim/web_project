@@ -105,7 +105,7 @@ body {
 
 }
 
-ul {
+.topnav ul {
   font-family: Tahoma, Geneva, sans-serif;
   list-style-type: none;
   margin: 0;
@@ -118,11 +118,11 @@ ul {
   align: center;
 }
 
-li {
+.topnav li {
   float: left;
 }
 
-li a {
+.topnav li a {
   display: block;
   color: white;
   text-align: center;
@@ -130,7 +130,7 @@ li a {
   text-decoration: none;
 }
 
-li a:hover {
+.topnav li a:hover {
   background-color: #D499B9;
   
 }

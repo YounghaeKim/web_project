@@ -70,14 +70,14 @@
 					<i class="fa fa-comments fa-fw"></i> Reply
 				</div>
 				-->
-				<div class="panel-head">
-					<i class="fa fa-comments fa-fw"></i> Reply
+				<div class="panel_head">
+					<i class="fa fa-comments fa-fw"></i>Reply
 					<button id="addReplyBtn" class="btn btn-primary btn-xs pull-right">New Reply</button>
 				</div>
 			
 			
 			
-				<div class="panel-body">
+				<div class="panel_body">
 					
 					<ul class="chat">
 						<li class="left clearfix" data-rno='12'>

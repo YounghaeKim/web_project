@@ -14,10 +14,5 @@ public class RobbyServiceImpl implements RobbyService{
 	@Autowired
 	private UserMapper boardMapper;
 	
-	@Override
-	public List<UserVO> getAllBoard() {
-		List<UserVO> listAllBoard = boardMapper.getAllBoard();
-		return listAllBoard;
-	}
 	
 }
