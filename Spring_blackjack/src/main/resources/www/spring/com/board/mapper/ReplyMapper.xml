@@ -26,15 +26,30 @@
 		update qna_reply set reply = #{reply}, updateDate = sysdate where rno = #{rno}
 	</update>
 	
-	
+	<!-- index를 이용한 페이지 쿼리 인덱스를 생성한다. 게시물의 댓글들을 모아서 빠르게 찾을 수 있는 구조로 만들어준다. -->
 	<select id="getListWithPaging" resultType="www.spring.com.board.model.ReplyVO">
-		select rno, bno, reply, replyer, replyDate, updateDate
-		from qna_reply
-		where bno = #{bno}
-		order by rno asc
+		<![CDATA[
+		SELECT rno, bno, reply, replyer, replydate, updatedate
+		from
+		    (
+		    SELECT /*+INDEX(qna_reply index_reply)*/
+		    rownum rn, rno, bno, reply, replyer, replyDate, updatedate
+		    FROM qna_reply
+		    where bno = #{bno}
+		    and rno > 0
+		    and rownum <= #{cri.pageNum} * #{cri.amount}
+		    ) where rn > (#{cri.pageNum} -1) * #{cri.amount}
+		]]>
+		
 	</select>
 	<!-- bno가 ReplyMapper의 @Param("bno")와 매칭되어서 사용된다. -->
 	
+	<!-- 댓글의 숫자 파악하기 -->
+	<select id="getCountByBno" resultType="int">
+	<![CDATA[
+	select count(rno) from qna_reply where bno = #{bno}
+	]]>
+	</select>
 	
 </mapper>
 

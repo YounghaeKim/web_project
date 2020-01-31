@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
 import www.spring.com.board.model.Criteria;
+import www.spring.com.board.model.ReplyPageDTO;
 import www.spring.com.board.model.ReplyVO;
 import www.spring.com.board.service.ReplyService;
 
@@ -53,9 +54,11 @@ public class ReplyController {
 			@PathVariable("page") int page,
 			@PathVariable("bno") Long bno) {
 		
-		log.info("getList.................");
-		Criteria cri = new Criteria(page, 10);
-		log.info(cri);
+		Criteria cri = new Criteria(page, 10);//댓글페이지 화면
+		
+		log.info("get Reply List bno: " + bno);
+
+		log.info("cri: " + cri);
 		
 		return new ResponseEntity<>(service.getList(cri, bno), HttpStatus.OK);
 	}

@@ -182,7 +182,16 @@
 
 .modal-footer .btn-warnig {
 background-color :rgb(42, 165, 134);
+} 
+.btn-warnig:hover {
+background-color :#1b6956;
 }
+
+.btn-primary:hover {
+	background-color: #004284;
+}
+
+
 
 .modal-footer .btn-danger {
 background-color : brown;
@@ -227,7 +236,7 @@ border: 1px solid black;
 }
 
 .btn-info:hover {
-	background-color: #008CBA;
+	background-color: #006384;
 	color: white;
 }
 
@@ -330,3 +339,14 @@ border: 1px solid black;
 	float: right;
 }
 
+.chat li:hover{
+	background-color: #caffff; 
+	cursor: pointer; 
+	
+}
+.clearfix {
+	border-bottom: 1px solid black;
+	border-bottom-style: dotted;
+	margin-right: 5%;
+	
+}

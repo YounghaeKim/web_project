@@ -17,7 +17,11 @@ alter table qna_reply add CONSTRAINT pk_qna_reply primary key (rno);
 alter TABLE qna_reply add CONSTRAINT fk_reply_qna_board
 FOREIGN key (bno) REFERENCES qna_board (bno);
 
---테스트
+--새로 추가됨 인덱스를 생성한다.
+create INDEX index_reply on QNA_REPLY (bno desc, rno asc);
+
+
+--여기 밑으로는 테스트용이니 실행하지 말것
 
 SELECT
     *
@@ -26,4 +30,24 @@ FROM qna_board where rownum < 10 ORDER BY bno desc;
 SELECT
     *
 FROM qna_reply ORDER BY rno desc;
---여기가운데는 테스트 용이니 디비 실행하지 말것
+
+--index생성 테스트
+SELECT /*+INDEX(qna_reply index_reply)*/
+    rownum rn, bno, rno, reply, replyer, replyDate,updatedate
+FROM qna_reply
+where bno = 11141169--(게시물번호)
+and rno > 0;
+
+
+SELECT rno, bno, reply, replyer, replydate, updatedate
+from
+    (
+    SELECT /*+INDEX(qna_reply index_reply)*/
+    rownum rn, bno, rno, reply, replyer, replyDate, updatedate
+    FROM qna_reply
+    where bno = 11141169--(게시물번호)
+    and rno > 0
+    and rownum <=20
+    )where rn > 10;
+
+--여기 가운데는 테스트 용이니 디비 실행하지 말것
