@@ -1,5 +1,7 @@
+drop INDEX index_reply;
 drop SEQUENCE seq_qna_reply;
 DROP TABLE qna_reply;
+
 
 CREATE TABLE qna_reply (
     rno         number(10, 0), 
@@ -17,11 +19,14 @@ alter table qna_reply add CONSTRAINT pk_qna_reply primary key (rno);
 alter TABLE qna_reply add CONSTRAINT fk_reply_qna_board
 FOREIGN key (bno) REFERENCES qna_board (bno);
 
---새로 추가됨 인덱스를 생성한다.
+--2020-02-03 새로 추가됨 인덱스를 생성한다.
 create INDEX index_reply on QNA_REPLY (bno desc, rno asc);
 
 
 --여기 밑으로는 테스트용이니 실행하지 말것
+insert into qna_reply (rno, bno, reply, replyer)
+(select seq_board.nextval, bno, reply, replyer from qna_reply);
+--반복데이터 만들기
 
 SELECT
     *
@@ -50,4 +55,4 @@ from
     and rownum <=20
     )where rn > 10;
 
---여기 가운데는 테스트 용이니 디비 실행하지 말것
+--여기까지 가운데는 테스트 용이니 디비 실행하지 말것

@@ -290,7 +290,7 @@ border: 1px solid black;
   display: inline-block; 
 }
 .pull-right ul li a {
-   display: block;
+  display: block;
   color: white;
   text-align: center;
   padding: 14px 16px;
@@ -299,6 +299,7 @@ border: 1px solid black;
 .pull-right ul li a:hover {
 	background-color: #D499B9;
 }
+
 
 .panel-body small {
    display: inline;
@@ -319,9 +320,9 @@ border: 1px solid black;
 
 /* reply */
 .panel_head {
-	 background-color: #8edbff;
-	 height: 50px;
-	 width: 100%;
+	background-color: #8edbff;
+	height: 50px;
+	width: 100%;
 	margin-left: auto;
 	margin-right: auto;
 	
@@ -350,3 +351,33 @@ border: 1px solid black;
 	margin-right: 5%;
 	
 }
+
+/*댓글창 번호 css 시작 */
+.panel-footer ul {
+	width: 95%;
+	margin-left: auto;
+	margin-right: auto;
+	background-color: #8080c0; 
+	position: static;
+	overflow: auto;
+	text-align: center;
+	font-family: Tahoma, Geneva, sans-serif;
+}
+
+.panel-footer ul li{
+	float: none;
+  	display: inline-block;
+}
+
+.panel-footer ul li a{
+	display: block;
+	color: white;
+	text-align: center;
+	padding: 14px 16px;
+	text-decoration: none;
+}
+
+.panel-footer ul li a:hover{
+	background-color: #D499B9;
+}
+/*댓글창 번호 css 끝 */

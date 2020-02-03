@@ -320,8 +320,8 @@ $(document).ready(function() {
 			
 			alert(result);
 			$(".modal").css("display","none");//css속성중 display 옵션을 활용해서 모달창을 감춘다.
-			showList(1);
-		})
+			showList(pageNum);//수정시 현재 댓글이 포함된 페이지로 이동한다
+		});
 	});
 	
 	
@@ -334,8 +334,8 @@ $(document).ready(function() {
 			
 			alert(result);
 			$(".modal").css("display","none");//css속성중 display 옵션을 활용해서 모달창을 감춘다.
-			showList(1);
-		})
+			showList(pageNum);//수정시 현재 댓글이 포함된 페이지로 이동한다
+		});
 	});
 	
 	
@@ -383,6 +383,22 @@ $(document).ready(function() {
 		
 		replyPageFooter.html(str);
 	}
+	
+	
+	//페이지 번호 클릭시 새로운 댓글을 가져오기
+	replyPageFooter.on("click","li a", function(e){
+		e.preventDefault();
+    console.log("page click");
+
+    var targetPageNum = $(this).attr("href");
+
+    console.log("targetPageNum: " + targetPageNum);
+
+    pageNum = targetPageNum;
+
+    showList(pageNum);
+		
+	});
 	
 });
 </script>
