@@ -12,4 +12,6 @@ public class BoardVO {
 	private String writer;
 	private Date regdate;
 	private Date updateDate;
+	
+	private int replyCnt; //댓글의 숫자
 }

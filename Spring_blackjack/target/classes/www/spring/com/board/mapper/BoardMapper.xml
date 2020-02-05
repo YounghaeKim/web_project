@@ -34,11 +34,11 @@
 	<select id="getListWithPaging" resultType="www.spring.com.board.model.BoardVO">
 		<![CDATA[
 			SELECT
-			    bno, title, content, writer , regdate, updateDate
+			    bno, title, content, writer , regdate, updateDate, replycnt
 			FROM
 			    (
 			    SELECT /*+INDEX_DESC(qna_board pk_qna_board) */
-			        rownum rn, bno, title, content, writer , regdate, updateDate
+			        rownum rn, bno, title, content, writer , regdate, updateDate, replycnt
 			    FROM 
 			    	qna_board
 			    where 
@@ -98,6 +98,10 @@
 		writer = #{writer},
 		updateDate = sysdate
 		where bno = #{bno}
+	</update>
+	
+	<update id="updateReplyCnt">
+		update qna_board set replycnt = replycnt + #{amount} where bno = #{bno}
 	</update>
 
 </mapper>

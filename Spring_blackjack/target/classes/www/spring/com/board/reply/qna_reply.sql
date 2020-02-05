@@ -22,6 +22,16 @@ FOREIGN key (bno) REFERENCES qna_board (bno);
 --2020-02-03 새로 추가됨 인덱스를 생성한다.
 create INDEX index_reply on QNA_REPLY (bno desc, rno asc);
 
+--댓글의 수 qna_board에 추가
+alter table qna_board add (replycnt NUMBER DEFAULT 0);
+
+
+--기존의 댓글이 존재했다면 replyCnt에 반영하기 위해서 아래를 실행
+update qna_board set replycnt = (SELECT COUNT(rno) from qna_reply
+where qna_reply.bno = qna_board.bno);
+
+
+
 
 --여기 밑으로는 테스트용이니 실행하지 말것
 insert into qna_reply (rno, bno, reply, replyer)

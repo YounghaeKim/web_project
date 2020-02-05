@@ -1,17 +1,23 @@
+drop table CUSTOMER_AUTH cascade constraints; --제약 조건이 걸려 있으면 cascade를 사용하여 지워준다.
+drop table CUSTOMER_DETAILS cascade constraints;
 drop table CUSTOMER;
 drop sequence seq_customer;
-
-drop table tbl_board;
-drop sequence seq_board;
-
-create sequence seq_board;
-
 create sequence seq_customer;
 
-create table CUSTOMER (
-   CUSTOMER_NUMBER      NUMBER(10) primary key,
-    ID                 VARCHAR2(20) not null,
-    PASSWORD           VARCHAR2(20) not null,
+create table CUSTOMER (--고객
+    ID                 VARCHAR2(20) primary key,
+    PASSWORD           VARCHAR2(20) not null
+);
+
+create table CUSTOMER_AUTH (--고객의 권한
+   ID        VARCHAR2(20) not null,
+   AUTH      VARCHAR2(50) not null,
+   constraint fk_customer_auth foreign key(ID) references CUSTOMER(ID)
+);
+
+create table CUSTOMER_DETAILS(--고객의 디테일 정보
+    CUSTOMER_NUMBER      NUMBER(10) primary key,
+    ID               VARCHAR2(20) not null,
     PHONE_NUMBER       VARCHAR2(100) not null,
     EMAIL              VARCHAR2(200) not null,
     NAME                 VARCHAR2(20) not null,
@@ -21,16 +27,16 @@ create table CUSTOMER (
     TOTAL_AMOUNT          NUMBER(30) default 0,
     WIN_RATE           NUMBER(3) default 0,
     REGISTRATION_DATE   date   default sysdate,
-    CONSTRAINT percent check(WIN_RATE between 0 and 100)
+    constraint percent check(WIN_RATE between 0 and 100),
+    constraint fk_customer_details foreign key(ID) references CUSTOMER(ID)
 );
 
-insert into CUSTOMER (CUSTOMER_NUMBER, ID, PASSWORD, PHONE_NUMBER, EMAIL, NAME, GENDER, 
-   CURRENT_CASH, TOTAL_AMOUNT, WIN_RATE)
-values (seq_board.nextval, 'newID', 'newPassword','newPoneNum', 'newEmail', 'newName', 'male', '100', '1000', '0');
+insert into CUSTOMER (ID, PASSWORD)--디폴트 아이디
+values ('asdf', 'asdf');
 
+insert into CUSTOMER_AUTH (ID, AUTH)--디폴트 아이디의 권한
+values ('asdf', 'ROLE_MEMBER');
 
-create table CUSTOMER_AUTH (
-   CUSTOMER_NUMBER      NUMBER(10) not null,
-   AUTH      varchar2(50) not null,
-   constraint fk_customer_auth foreign key(CUSTOMER_NUMBER) references CUSTOMER(CUSTOMER_NUMBER)
-);
+insert into CUSTOMER_DETAILS (CUSTOMER_NUMBER, ID, PHONE_NUMBER, EMAIL, NAME, GENDER, 
+   CURRENT_CASH, TOTAL_AMOUNT, WIN_RATE)--디폴트 아이디의 상세 정보
+values (seq_board.nextval, 'asdf', 'asdf', 'asdf', 'asdf', 'male', '100', '1000', '0');

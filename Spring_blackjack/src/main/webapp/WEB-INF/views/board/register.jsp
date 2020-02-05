@@ -31,19 +31,19 @@
 				  <div class="panel-body">
 					<form role="form" action="/board/register" method="post">
 						<div class="form-group">
-							<label>제목</label> <input class="form-control" name="title">
+							<label>제목</label> <input required class="form-control" name="title">
 						</div>
 						
 						<div class="form-group">
 							<label>내용</label>
-							<textarea class="form-controller" rows="7" name='content'></textarea>
+							<textarea required class="form-controller" rows="7" name='content'></textarea>
 						</div>			
 						
 						<div class="form-group">
-							<label>작성자</label> <input class="form-control" name="writer">
+							<label>작성자</label> <input required class="form-control" name="writer">
 						</div>
 						
-						<button type="submit" class="btn btn-default">Submit Button</button>
+						<button type="submit" id="btnSave" class="btn btn-default">Submit Button</button>
 						<button type="reset" class="btn btn-default">Reset Button</button>
 					
 					</form>
@@ -57,6 +57,5 @@
 		</div>
 		
    </div><!-- row End -->
-   
 </body>
 </html>

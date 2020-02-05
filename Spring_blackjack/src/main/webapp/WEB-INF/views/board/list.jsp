@@ -44,7 +44,9 @@
                <tr>
                   <td><c:out value="${board.bno}" /></td>
                   <td><a class='move' href='<c:out value="${board.bno}"/>'>
-                  <c:out value="${board.title}" /></a></td>
+                  <c:out value="${board.title}" />	<b>[<c:out value="${board.replyCnt}"/>]</b>
+                  </a>
+                  </td>
                   <td><c:out value="${board.writer}" /></td>
                   <td><fmt:formatDate pattern="yyyy-MM-dd" value="${board.regdate}" /></td>
                   <td><fmt:formatDate pattern="yyyy-MM-dd" value="${board.updateDate}" /></td>
@@ -154,11 +156,16 @@ $(document).ready(
        if (result === '' || history.state) {
          return;
       }
+       
        if (parseInt(result) > 0) {
           
           $(".content").html("게시글 " + parseInt(result) + " 번이 등록되었습니다." + "<br><br>");
       }
+       else if (result === null) {
+    	   $(".content").html("에러" + "<br><br>");	
+		} 
    
+       
        $(".modal").css("display","flex");
       
     }
@@ -169,7 +176,7 @@ $(document).ready(
    $("#regBtn").on("click", function(){
    
      self.location = "/board/register";
-     alert("누르지마");
+     alert("새글등록 이동!!");
    });
    
    /* 페이징 번호 처리 */
