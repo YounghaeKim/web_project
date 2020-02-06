@@ -8,7 +8,7 @@ pageEncoding="UTF-8"%>
    <link rel="stylesheet" href="/resources/css/gameInfoPage.css"  type="text/css" />
    <title>회원가입 페이지</title>
 </head>
-<body>
+<body> 
    
    <%@include file="../includes/header.jsp"%>
         
@@ -81,7 +81,7 @@ pageEncoding="UTF-8"%>
       <div class="column side">
          <img alt="TAKO" src="resources/img/TAKO.jpg">
       </div>
-   </div>
+   </div>  
    <audio src="resources/mp3/NeverMind.mp3" autoplay loop>
 </body>
 </html>

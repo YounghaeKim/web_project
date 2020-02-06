@@ -22,5 +22,10 @@
 	</beans:bean>
 	
 	<context:component-scan base-package="www.spring.com" />
+	<context:component-scan base-package="www.spring.com.board.controller" />
+	
+	<beans:bean id="multipartResolver" class="org.springframework.web.multipart.support.StandardServletMultipartResolver">
+	
+	</beans:bean>
 	
 </beans:beans>

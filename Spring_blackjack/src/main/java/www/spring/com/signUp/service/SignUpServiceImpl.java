@@ -18,7 +18,4 @@ public class SignUpServiceImpl implements SignUpService{
       userMapper.signUpRequest(signUpRequestUser); //회원가입
       userMapper.giveRole(signUpRequestUser.getId(), AuthVO.ROLE_MEMBER);//멤버 권한 부여
    }
-   
-   
-   
 }
