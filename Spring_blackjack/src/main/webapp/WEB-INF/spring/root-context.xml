@@ -45,14 +45,15 @@
 
    <context:component-scan base-package="www.spring.com"></context:component-scan><!-- 자바 불러옴 -->
    <context:component-scan base-package="www.spring.com.board.service"></context:component-scan><!-- board service 불러옴 -->
-   
-	<!-- AOP 설정 -->
+
+    <!-- AOP 설정 -->
    	<context:component-scan base-package="www.spring.com.AOP.service"></context:component-scan><!-- AOP service를 불러온다. -->
    	<context:component-scan base-package="www.spring.com.AOP.log"></context:component-scan><!-- AOP log를 불러온다. -->
    	
-   	<aop:aspectj-autoproxy></aop:aspectj-autoproxy>
+   	<aop:aspectj-autoproxy proxy-target-class="true"></aop:aspectj-autoproxy>
+   	<!-- 인터페이스로 구성되지 않은 함수는 proxy-target-class="true"를 선언하여 클래스도 인식가능하게 해야한다. -->
    	<!-- AOP 설정 End-->
-   
+   	
 </beans>
 
 

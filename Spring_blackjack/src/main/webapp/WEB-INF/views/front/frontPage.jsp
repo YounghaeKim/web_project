@@ -26,10 +26,10 @@ pageEncoding="UTF-8"%>
       <div class="column left"> 
          <img alt="casino" src="resources/img/LOGO_2.png" style="width:20%">
          <br><br>
-         <form name="loginCheck" method="post" action="loginCheck.do"><!-- 로그인 체크, 포스트 -->
+         <form name="loginCheck" method="post" action="/login"><!-- 로그인 체크, 포스트 -->
             <div class="textbox">
                <label for="id"></label> 
-               <input type="text" id="id" name="id" placeholder="ID">
+               <input type="text" id="id" name="username" placeholder="ID">
             </div>
             <div class="textbox">
                <label for="password"></label> 

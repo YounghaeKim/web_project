@@ -50,7 +50,7 @@ public class ReplyServiceImpl implements ReplyService{
 		
 		return mapper.update(vo);
 	}
-
+ 
 	@Transactional//register나 remove 둘중하나라도 오류가 나면 처리가 이루어지지 않는다.
 	@Override
 	public int remove(Long rno) {

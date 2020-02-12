@@ -2,17 +2,30 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
    xmlns:security="http://www.springframework.org/schema/security"
-   xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
-      http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd">
+   xmlns:context="http://www.springframework.org/schema/context"
+   xmlns:task="http://www.springframework.org/schema/task"
+   xsi:schemaLocation="http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd
+      http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-4.3.xsd
+      http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+      http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+
+
+   <bean id = "BCryptPasswordEncoder" class = "org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"></bean>
+   <bean id = "CustomUserDetailsService" class = "www.spring.com.user.service.CustomUserDetailsService"/>
 
    <security:http>
       <!-- /member/* 로 시작하는 매핑은 멤버 권한 이상이 필요하다. -->
       <security:intercept-url pattern = "/member/*" access = "hasRole('ROLE_MEMBER')"/>
       <!-- 로그인 페이지 -->
-      <security:form-login login-page = "/"/>
+      <security:form-login login-page = "/"
+      />
       <security:csrf disabled = "true"/>
    </security:http>
    
    <security:authentication-manager>
+      <security:authentication-provider user-service-ref="CustomUserDetailsService">
+         <security:password-encoder ref = "BCryptPasswordEncoder"/>
+      </security:authentication-provider>
    </security:authentication-manager>
+   
 </beans>

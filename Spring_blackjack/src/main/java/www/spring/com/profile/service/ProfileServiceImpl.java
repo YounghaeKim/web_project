@@ -16,8 +16,7 @@ public class ProfileServiceImpl implements ProfileService{
 
 	@Override
 	public UserVO getCurrentUser(UserVO findingUser) {
-		UserVO findedUser = userMapper.findUser(findingUser);
-		return findedUser;
+		return null;
 	}
 	
 }

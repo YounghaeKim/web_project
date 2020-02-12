@@ -1,4 +1,4 @@
-drop table CUSTOMER_AUTH cascade constraints; --제약 조건이 걸려 있으면 cascade를 사용하여 지워준다.
+drop table CUSTOMER_AUTH cascade constraints;
 drop table CUSTOMER_DETAILS cascade constraints;
 drop table CUSTOMER;
 drop sequence seq_customer;
@@ -6,7 +6,7 @@ create sequence seq_customer;
 
 create table CUSTOMER (--고객
     ID                 VARCHAR2(20) primary key,
-    PASSWORD           VARCHAR2(20) not null
+    PASSWORD           VARCHAR2(100) not null
 );
 
 create table CUSTOMER_AUTH (--고객의 권한

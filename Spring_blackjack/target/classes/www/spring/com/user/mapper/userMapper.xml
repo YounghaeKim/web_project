@@ -9,19 +9,22 @@
    <!-- 유저 객체 생성 -->
    <resultMap id="UserInfo"
       type="www.spring.com.user.model.UserVO">
-      <id property="customerNumber" column="CUSTOMER_NUMBER" />
-      <result property="id" column="ID" />
+      <!-- Customer 테이블 -->
+      <id property="id" column="ID" />
       <result property="password" column="PASSWORD" />
-      <result property="phoneNumber" column="PHONE_NUMBER" />
-      <result property="email" column="EMAIL" />
-      <result property="name" column="NAME" />
-      <result property="gender" column="GENDER" />
-      <result property="currentCash" column="CURRENT_CASH" />
-      <result property="totalAmount" column="TOTAL_AMOUNT" />
-      <result property="winRate" column="WIN_RATE" />
-      <result property="registrationDate" column="REGISTRATION_DATE" />
+      <!-- Customer_details 테이블 -->
+	  <result property="customerNumber" column="CUSTOMER_NUMBER" />
+	  <result property="phoneNumber" column="PHONE_NUMBER" />
+	  <result property="email" column="EMAIL" />
+	  <result property="name" column="NAME" />
+	  <result property="gender" column="GENDER" />
+	  <result property="currentCash" column="CURRENT_CASH" />
+	  <result property="totalAmount" column="TOTAL_AMOUNT" />
+	  <result property="winRate" column="WIN_RATE" />
+	  <result property="registrationDate" column="REGISTRATION_DATE" />
+      <!-- Customer_Auth 테이블 -->
       <collection property="authList" 
-         column="customerNumber" 
+         column="ID" 
          javaType="java.util.ArrayList"
          resultMap="rm4AuthVO"
       />
@@ -29,51 +32,50 @@
    
    <!-- 권한 -->
    <resultMap id="rm4AuthVO" type="www.spring.com.user.model.AuthVO">
-      <id property="customerNumber" column="customerNumber" />
-      <id property="auth" column="auth" />
+      <id property="id" column="ID" />
+      <id property="auth" column="AUTH" />
    </resultMap>
 
 <!-- SQL -->
-   <!-- 회원가입 -->
-   <insert id="signUpRequest">
+	<!-- 회원가입 -->
+	<insert id="signUpRequest">
       <!-- 순수 SQL문으로만 인식해라 연산이 들어갈 경우 -->
       <![CDATA[
-         insert into CUSTOMER (CUSTOMER_NUMBER, ID, PASSWORD, PHONE_NUMBER, EMAIL, NAME, GENDER, 
-            CURRENT_CASH)
-         values (seq_board.nextval, #{id,jdbcType=VARCHAR}, 
-         #{password,jdbcType=VARCHAR}, #{phoneNumber,jdbcType=VARCHAR}, 
-         #{email,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, 
-         #{gender,jdbcType=VARCHAR}, '100')
+         insert into CUSTOMER (ID, PASSWORD)
+		 values (#{id}, #{password})
+      ]]>
+	</insert>
+	<!-- 유저 디테일 생성 -->
+	<insert id="makeDetails">
+      <!-- 순수 SQL문으로만 인식해라 연산이 들어갈 경우 -->
+      <![CDATA[
+         insert into CUSTOMER_DETAILS (CUSTOMER_NUMBER, ID, PHONE_NUMBER, EMAIL, NAME, GENDER, 
+            CURRENT_CASH, TOTAL_AMOUNT, WIN_RATE)
+         values (seq_board.nextval, #{id,jdbcType=VARCHAR}, #{phoneNumber,jdbcType=VARCHAR},
+             #{email,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{gender,jdbcType=VARCHAR},
+              '100000', '0', '0')
       ]]>
       <!-- 회원가입 기본지급액 100000 데이터베이스로 전달 -->
-   </insert>
-   <!-- 권한부여 -->
-   <insert id="giveRole" >
-     <selectKey resultType = "int" keyProperty = "customerNumber" order = "BEFORE">
-        <![CDATA[
-            select CUSTOMER_NUMBER from CUSTOMER
-            where ID = #{id}
-          ]]>
-     </selectKey>
+	</insert>
+	<!-- 권한부여 -->
+	<insert id="giveRole" >
       <![CDATA[
-         insert into CUSTOMER_AUTH (CUSTOMER_NUMBER, AUTH)
-         values (#{customerNumber}, #{auth})
+         insert into CUSTOMER_AUTH (ID, AUTH)
+         values (#{id}, #{auth})
       ]]>
-   </insert>
-   
-   <!-- 로그인 -->
-   <select id="loginRequest" resultMap="UserInfo">
-      <!-- 아이디와 권한 매칭하여 찾기 -->
-      <![CDATA[
-         select * from CUSTOMER
-         where ID = #{logInRequestID}
-      ]]>
-   </select>
-   <!-- select * 
-           from CUSTOMER c LEFT OUTER JOIN CUSTOMER_AUTH a
-                on c.customerNumber = a.customerNumber 
-          where c.ID = #{logInRequestID} -->
-   
+	</insert>
+	
+	<!-- 로그인 -->
+	<select id="loadUserByUserID" resultMap="UserInfo">
+		<!-- 아이디로 권한, 유저 디테일 조인 찾기 -->
+		<![CDATA[
+			select * from CUSTOMER c 
+			LEFT OUTER JOIN CUSTOMER_AUTH a on c.ID = a.ID 
+			LEFT OUTER JOIN CUSTOMER_DETAILS d on c.ID = d.ID
+			where c.ID = #{id}
+		]]>
+	</select>
+
    <select id="findUser" resultMap="UserInfo">
       <![CDATA[
          select * from CUSTOMER where CUSTOMER_NUMBER = #{customerNumber}

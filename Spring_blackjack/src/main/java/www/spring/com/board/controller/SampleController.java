@@ -18,6 +18,11 @@ import lombok.extern.log4j.Log4j;
 import www.spring.com.board.model.SampleVO;
 import www.spring.com.board.model.Ticket;
 
+/* @RestController는
+ * 해당 Controller의 모든 메서드의 리턴 타입을 기존과 다르게 처리한다.
+ * Rest방식 
+ */
+
 @RestController
 @RequestMapping("/sample") 
 @Log4j
