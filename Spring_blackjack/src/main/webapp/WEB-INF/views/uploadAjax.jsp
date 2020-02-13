@@ -6,12 +6,43 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <title>Insert title here</title>
+<style>
+
+.uploadResult {
+	width : 100%;
+	background-color: #E6E6E6;
+}
+
+.uploadResult ul {
+	display: flex;
+	flex-flow: row;
+	justify-content: center;
+	align-items: center;
+}
+
+.uploadResult ul li {
+	list-style: none;
+	padding: 10px;
+}
+
+.uploadResult ul li img {
+	width: 25px;
+}
+
+</style>
+
 </head>
 <body>
 <h1>Upload with Ajax</h1>
 
 <div class="uploadDiv">
 	<input type="file" name="uploadFile" multiple>
+</div>
+
+<div class="uploadResult">
+	<ul>
+	
+	</ul>
 </div>
 
 <button id="uploadBtn">Upload</button>
@@ -41,6 +72,33 @@ $(document).ready(function(){
 		return true;
 	}
 	
+	var cloneObj = $(".uploadDiv").clone();
+	// └<input type="file">객체가 포함된 div를 복사(cloen)한다.
+	
+	
+	var uploadResult = $(".uploadResult ul");
+		
+		function showUploadedFile(uploadResultArr) {
+			// └json 데이터를 받아서 해당 파일의 이름을 추가합니다. 
+			
+			var str = "";
+			
+			$(uploadResultArr).each(function(i, obj) {
+				
+				if (!obj.image) { //이미지 파일이 아닐경우 attach 이미지파일을 보여준다.
+					str += "<li><img src='/resources/img/attach.png'>" + obj.fileName + "</li>";
+				} else { 
+					//str += "<li>" + obj.fileName + "</li>";
+					
+					var fileCallPath = encodeURIComponent(obj.uploadPath+ "/s_"+obj.uuid+"_"+obj.fileName);
+					
+					str += "<li><img src='/display?fileName="+fileCallPath+"'><li>";
+				}
+			});
+			
+			uploadResult.append(str);
+		}
+	
 	
 	$("#uploadBtn").on("click",function(e){
 		
@@ -68,8 +126,16 @@ $(document).ready(function(){
 			contentType: false, //processData, contentTypesms를 'false'로 지정해야만 전송된다.
 			data: formData, //ajax를 통해서 formData 자체를 전송한다.
 			type: 'POST',
+			dataType: 'json', //ajax를 호출했을때 결과 타입(data type)을 'json'으로 변경한다. 
 			success: function(result){
-				alert("Uploaded");
+
+				console.log(result); //브라우저에서 결과 출력	
+				
+				showUploadedFile(result); //화면에 업로드 된 파일의 이름을 출력해준다.
+				
+				$(".uploadDiv").html(cloneObj.html());
+				// └첨부파일을 업로드 한 후 복사된 객체를 div 내에 다시 추가해서 첨부파일 부분을 초기화 시킨다.
+				
 			}
 		});//$.ajax
 		
