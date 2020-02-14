@@ -10,6 +10,8 @@ import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
+import org.springframework.core.io.FileSystemResource;
+import org.springframework.core.io.Resource;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -188,6 +190,21 @@ public class UploadController {
 			e.printStackTrace();
 		}
 		return result;
+	}
+	
+	@GetMapping(value = "/download", produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
+	@ResponseBody
+	public ResponseEntity<Resource> downloadFile(String fileName) {//파일 다운로드
+		//org.springframework.core.io.Resource를 임포트 한다.
+		
+		log.info("download file: " + fileName);
+		
+		Resource resource = new FileSystemResource("c:\\upload\\" + fileName);
+		
+		log.info("resource: " + resource);
+		
+		return null;
+
 	}
 	
 	
