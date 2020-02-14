@@ -1,7 +1,5 @@
 package www.spring.com.signUp.service;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,12 +10,14 @@ import www.spring.com.user.model.UserVO;
 public class SignUpServiceImpl implements SignUpService{
 
 	@Autowired
-	private UserMapper boardMapper;
-	
+	private UserMapper userMapper;
+
 	@Override
-	public List<UserVO> getAllBoard() {
-		List<UserVO> listAllBoard = boardMapper.getAllBoard();
-		return listAllBoard;
+	public void requestSignUp(UserVO signUpRequestUser) {
+		userMapper.signUpRequest(signUpRequestUser); //회원가입
+		System.out.println("ee");
 	}
+	
+	
 	
 }

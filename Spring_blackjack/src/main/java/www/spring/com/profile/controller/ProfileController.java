@@ -22,7 +22,7 @@ public class ProfileController {
 	@RequestMapping("/profile.do")
 	public String getCurrentUserInfo(HttpSession session, Model model) {
 		//세션에 저장된 유저 넘버로 개인정보를 가져온다.\
-		model.addAttribute("currentUser", (UserVO) session.getAttribute("customerNumber"));
+		model.addAttribute("currentUser", (UserVO) session.getAttribute("sessionUser"));
 		return "profile/profilePage";
 	}
 }
