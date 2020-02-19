@@ -3,6 +3,8 @@ package www.spring.com.board.controller;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.nio.file.Files;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -21,6 +23,7 @@ import org.springframework.ui.Model;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -194,16 +197,55 @@ public class UploadController {
 	
 	@GetMapping(value = "/download", produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
 	@ResponseBody
-	public ResponseEntity<Resource> downloadFile(String fileName) {//파일 다운로드
+	public ResponseEntity<Resource> downloadFile(@RequestHeader("User-Agent") String userAgent, String fileName) {
+		//파일 다운로드
 		//org.springframework.core.io.Resource를 임포트 한다.
-		
-		log.info("download file: " + fileName);
+		/*@RequestHeader를 이용해서 필요한 HTTP 헤더 메시지의 내용을 수집할 수 있다.
+		 이를 이용해서 User-Agent의 정보를 파악하고 값이  MSIE 혹은 TRident(IE브라우저의 엔진이름-IE11처리)인 
+		 경우에는 다른 방식으로 처리하도록 한다.
+		 */
 		
 		Resource resource = new FileSystemResource("c:\\upload\\" + fileName);
 		
-		log.info("resource: " + resource);
+		if (resource.exists() == false) {
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		}
 		
-		return null;
+		String resourceName = resource.getFilename();
+		
+		HttpHeaders headers = new HttpHeaders();
+		
+		try {
+			
+			String downloadName = null;
+			
+			if (userAgent.contains("Trident")) {
+				log.info("IE browser");
+				
+				downloadName = URLEncoder.encode(resourceName, "UTF-8").replaceAll("\\+", " ");
+						
+			} else if(userAgent.contains("Edge")){
+
+				log.info("Edge browser");
+				
+				downloadName = URLEncoder.encode(resourceName, "UTF-8");
+				
+				log.info("Edge name " + downloadName);
+				
+			} else {
+				
+				log.info("Chrome browser");
+				downloadName = new String(resourceName.getBytes("UTF-8"), "ISO-8859-1");
+			}
+			
+			headers.add("Content-Disposition", "attachment; filename=" + downloadName);
+			//다운로드시 저장되는 이름은 'Content-Disposition'을 이용해서 지정한다.
+
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		}
+		
+		return new ResponseEntity<Resource>(resource, headers, HttpStatus.OK);
 
 	}
 	
