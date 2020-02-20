@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
 import java.net.URLEncoder;
 import java.nio.file.Files;
 import java.text.SimpleDateFormat;
@@ -213,6 +214,10 @@ public class UploadController {
 		
 		String resourceName = resource.getFilename();
 		
+		//remove uuid 파일 다운받을때 uuid 를 지워준다.
+		String resourceOriginalName = resourceName.substring(resourceName.indexOf("_") + 1);
+		
+		
 		HttpHeaders headers = new HttpHeaders();
 		
 		try {
@@ -222,21 +227,23 @@ public class UploadController {
 			if (userAgent.contains("Trident")) {
 				log.info("IE browser");
 				
-				downloadName = URLEncoder.encode(resourceName, "UTF-8").replaceAll("\\+", " ");
+				downloadName = URLEncoder.encode(resourceOriginalName, "UTF-8").replaceAll("\\+", " ");
 						
 			} else if(userAgent.contains("Edge")){
 
 				log.info("Edge browser");
 				
-				downloadName = URLEncoder.encode(resourceName, "UTF-8");
+				downloadName = URLEncoder.encode(resourceOriginalName, "UTF-8");
 				
 				log.info("Edge name " + downloadName);
 				
 			} else {
 				
 				log.info("Chrome browser");
-				downloadName = new String(resourceName.getBytes("UTF-8"), "ISO-8859-1");
+				downloadName = new String(resourceOriginalName.getBytes("UTF-8"), "ISO-8859-1");
 			}
+			
+			log.info("downloadName: " + downloadName);
 			
 			headers.add("Content-Disposition", "attachment; filename=" + downloadName);
 			//다운로드시 저장되는 이름은 'Content-Disposition'을 이용해서 지정한다.
@@ -247,6 +254,39 @@ public class UploadController {
 		
 		return new ResponseEntity<Resource>(resource, headers, HttpStatus.OK);
 
+	}
+	
+	
+	@PostMapping("/deleteFile")
+	@ResponseBody
+	public ResponseEntity<String> deleteFile(String fileName, String type) {
+		//전송하는 파일 이름과 종류를 파라미터로 받아서 파일의 종류에 따라 다르게 동작한다.
+		
+		log.info("deleteFile: " + fileName);
+		
+		File file;
+		
+		try {
+			file = new File("c:\\upload\\" + URLDecoder.decode(fileName, "UTF-8"));
+			
+			file.delete();
+			
+			if (type.equals("image")) {
+				// 이미지의 경우 섬네일이 존재하기에 파일이름 중간에 s_가 들어있다. 일반 이미지 파일의 경우s_가 없으므로 
+				String largeFileName = file.getAbsolutePath().replace("s_", "");
+				// 이 부분을 변경해서 원본이미지 파일도 같이 삭제하도록 처리 한다.
+				log.info("largeFileName : " + largeFileName);
+				
+				file = new File(largeFileName);
+				
+				file.delete();
+			}
+			
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		}
+		return new ResponseEntity<String>("deleted", HttpStatus.OK);
 	}
 	
 	
