@@ -277,6 +277,7 @@
 	flex-flow: row;
 	justify-content: center;
 	align-items: center;
+	background-color: #E6E6E6;
 }
 
 .uploadResult ul li {
@@ -290,8 +291,29 @@
 	width: 100px;
 }
 .uploadResult ul li span {
-	color: white;
+	color: black;
 }
+.uploadResult ul li button {
+  background: #ff8000;
+  border: none;
+  border-radius: 50%;
+  color: white;
+  padding: 4px 4px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 10px;
+  margin: 2px 2px;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+  cursor: pointer;
+}
+.uploadResult ul li button:after {
+  content: "\274c"; /* use the hex value here... 첨부파일 X자 버튼 */
+  
+	
+}
+
 .bigPictureWrapper {
 	position: absolute;
 	display: none;
@@ -314,4 +336,5 @@
 	width: 600px;
 }
 <!-- 업로드 파일 end -->
+
 

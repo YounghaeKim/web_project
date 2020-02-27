@@ -1,5 +1,10 @@
 package www.spring.com.board.controller;
 
+import java.util.List;
+
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -7,9 +12,12 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import lombok.AllArgsConstructor;
+import lombok.extern.log4j.Log4j;
+import www.spring.com.board.model.BoardAttachVO;
 import www.spring.com.board.model.BoardVO;
 import www.spring.com.board.model.Criteria;
 import www.spring.com.board.model.PageDTO;
@@ -19,6 +27,7 @@ import www.spring.com.board.service.BoardService;
  * @AllArgsConstructor를 이용 해서 생성자를 만들고 자동으로 주입하도록 한다.
  *
  */
+@Log4j
 @Controller
 @RequestMapping("/board") // /board로 시작하는 모든 처리를 BoardController가 한다.
 @AllArgsConstructor
@@ -55,7 +64,17 @@ public class BoardController {
 	public String register(BoardVO board, RedirectAttributes rttr) {
 		// RedirectAttributes등록 작업이 끈난 후 다시 목록 화면으로 이동
 		// 추가적으로 새롭게 등록된 게시물의 번호를 같이 전달하기 위해서 RedirectAttributes를 사용
-		System.out.println("register: " + board);
+		log.info("==========================");
+		
+		log.info("register: " + board);
+		
+		if(board.getAttachList() != null) {
+			
+			board.getAttachList().forEach(attach -> log.info(attach));
+			
+		}
+		
+		log.info("==========================");
 		
 		service.register(board);;
 		
@@ -99,5 +118,15 @@ public class BoardController {
 		
 		return "redirect:/board/list" + cri.getListLink();
 	}
+	
+	@GetMapping(value = "/getAttachList", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+	@ResponseBody
+	public ResponseEntity<List<BoardAttachVO>> getAttachList(Long bno) {
+		
+		log.info("getAttachList " + bno);
+		
+		return new ResponseEntity<>(service.getAttachList(bno), HttpStatus.OK);
+	}
+	
 	
 }

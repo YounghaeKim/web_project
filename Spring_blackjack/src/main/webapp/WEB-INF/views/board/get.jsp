@@ -64,6 +64,32 @@
 			</div>
 			<!-- end panel-default -->
 			
+			<div class="bigPictureWrapper">
+				<div class="bigPicture">
+				</div>
+			</div>
+			
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="panel panel-default">
+					
+						<div class="panel-head">Files</div>
+						<!-- End panel-head -->
+							<div class="panel-body">
+							
+								<div class="uploadResult">
+									<ul>
+									</ul>
+								</div>
+							</div>
+							<!-- end panel-body -->
+					</div>
+					<!-- end panel -->
+				</div>
+				<!-- end col-lg-12 -->
+			</div>
+			<!-- end row -->
+			
 			<!-- Start Reply -->
 			<div class="panel panel-default">
 				<!-- <div class="panel-head">
@@ -198,6 +224,44 @@ replyService.get(10, function(data){
 
 <script>
 $(document).ready(function() {
+	
+	(function(){
+		
+		var bno = '<c:out value="${board.bno}"/>';
+		
+		$.getJSON("/board/getAttachList", {bno: bno}, function(arr){
+			//첨부파일의 데이터를 가져오는 부분을 즉시 실행 함수를 이용해서 처리한다.
+			console.log(arr);
+			
+			var str = "";
+			
+			$(arr).each(function(i, attach){
+				
+				//image Type
+				if (attach.fileType) {
+					var fileCallPath = encodeURIComponent(attach.uploadPath+ "/s_"+attach.uuid+"_"+attach.fileName);
+					
+					str += "<li data-path='"+attach.uploadPath+"' data-uuid='"+attach.uuid+"' data-filename='"+attach.fileName+"' data-type='"+attach.fileType+"' ><div>"
+					str += "<img src='/display?fileName="+fileCallPath+"'>";
+					str += "</div>";
+					str +"</li>";
+				}else{
+					
+					str += "<li data-path='"+attach.uploadPath+"' data-uuid='"+attach.uuid+"' data-filename='"+attach.fileName+"' data-type='"+attach.fileType+"' ><div>"
+					str += "<span> "+ attach.fileName+"</span></br>";
+					str += "<img src='/resources/img/attach.png'></a>";
+					str += "</div>";
+					str +"</li>";
+				}
+			});
+			
+			$(".uploadResult ul").html(str);
+			
+		});//end getjsone
+		
+	})();//end function
+	
+	
 	
 	var bnoValue = '<c:out value="${board.bno}"/>';
 	var replyUL = $(".chat");

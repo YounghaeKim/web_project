@@ -2,6 +2,7 @@ package www.spring.com.board.service;
 
 import java.util.List;
 
+import www.spring.com.board.model.BoardAttachVO;
 import www.spring.com.board.model.BoardVO;
 import www.spring.com.board.model.Criteria;
 
@@ -14,5 +15,7 @@ public interface BoardService {
 	//public List<BoardVO> getList(); //전체 게시물 가져오기
 	public List<BoardVO> getList(Criteria cri); //페이지처리 게시물 가져오기
 	public int getTotal(Criteria cri);//전체 데이터 갯수 가져오기
+	
+	public List<BoardAttachVO> getAttachList(Long bno);//게시물의 첨부파일들의 목록 가져오기
 	
 }

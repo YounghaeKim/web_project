@@ -4,25 +4,45 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import lombok.AllArgsConstructor;
 import lombok.Setter;
+import lombok.extern.log4j.Log4j;
+import www.spring.com.board.mapper.BoardAttachMapper;
 import www.spring.com.board.mapper.BoardMapper;
+import www.spring.com.board.model.BoardAttachVO;
 import www.spring.com.board.model.BoardVO;
 import www.spring.com.board.model.Criteria;
 
+@Log4j
 @Service
 @AllArgsConstructor
 public class BoardServiceImpl implements BoardService {
 
 	@Setter(onMethod=@__({@Autowired}))
 	private BoardMapper mapper;
+
+	@Setter(onMethod=@__({@Autowired}))
+	private BoardAttachMapper attachMapper;
 	
+	@Transactional //qna_board 와 qna_attach 테이블 모두 insert가 진행 되어야 하기때문에 사용함
 	@Override
 	public void register(BoardVO board) {
-		System.out.println("register....." + board);
+		log.info("register....." + board);
 		
-		mapper.insertSelectKey(board);
+		mapper.insertSelectKey(board); //qna_board에 먼저 등록
+		
+		if (board.getAttachList() == null || board.getAttachList().size() <= 0) {
+			return; // 값이 null이거나 size가 0이하이면 리턴
+		}
+		
+		board.getAttachList().forEach(attach ->{//람다식 문제가 없다면 qna_attach 테이블에 등록
+			
+			attach.setBno(board.getBno());
+			attachMapper.insert(attach);
+		});
+		
 	}
 
 	@Override
@@ -65,6 +85,15 @@ public class BoardServiceImpl implements BoardService {
 		System.out.println("get List With Criteria: " + cri);
 		
 		return mapper.getListWithPaging(cri);
+	}
+	
+	@Override
+	public List<BoardAttachVO> getAttachList(Long bno) {//게시물의 첨부파일들의 목록 가져오기
+		
+		log.info("get Attach list by bno " + bno);
+		
+		return attachMapper.findByBno(bno); //게시물 번호를 이용해서 BoardAttachVO 타입으로 변환
+		
 	}
 
 }

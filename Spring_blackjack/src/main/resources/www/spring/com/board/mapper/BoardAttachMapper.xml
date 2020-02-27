@@ -5,20 +5,20 @@
 
 <mapper namespace="www.spring.com.board.mapper.BoardAttachMapper">
 
-<insert id="insert">
-insert into qna_attach (uuid, uploadPath, fileName, fileType, bno)
-values (#{uuid}, #{uploadPath}, #{fileName}, #{fileType}, #{bno} )
-</insert>
-
-
-<delete id="delete">
-
-delete from qna_attach where uuid = #{uuid}
-
-</delete>
-
-<select id="findByBno" resultType="www.spring.com.board.model.BoardAttachVO">
-select * from qna_attach where bno = #{bno}
-</select>
+	<insert id="insert">
+	insert into qna_attach (uuid, uploadPath, fileName, fileType, bno)
+	values (#{uuid}, #{uploadPath}, #{fileName}, #{fileType}, #{bno} )
+	</insert>
+	
+	
+	<delete id="delete">
+	
+	delete from qna_attach where uuid = #{uuid}
+	
+	</delete>
+	
+	<select id="findByBno" resultType="www.spring.com.board.model.BoardAttachVO">
+	select * from qna_attach where bno = #{bno}
+	</select>
 
 </mapper>

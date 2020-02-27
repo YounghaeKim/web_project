@@ -97,7 +97,27 @@ $(document).ready(function(e){
 		e.preventDefault();
 		
 		console.log("submit clicked");
-	})
+		
+		var str = "";
+		
+		$(".uploadResult ul li").each(function(i, obj){
+			/*브라우저에서 게시물 등록을 선택하면 이미 업로드 된 항목들을 내부적으로 
+			input type = 'hidden' 태그들로 만들어서 form 태그가 submit 될 때 같이 전송되도록 한다.*/
+			
+			var jobj = $(obj);
+			
+			console.dir(jobj);
+			
+			str += "<input type = 'hidden' name='attachList["+i+"].fileName' value='"+jobj.data("filename")+"'>";
+			str += "<input type = 'hidden' name='attachList["+i+"].uuid' value='"+jobj.data("uuid")+"'>";
+			str += "<input type = 'hidden' name='attachList["+i+"].uploadPath' value='"+jobj.data("path")+"'>";
+			str += "<input type = 'hidden' name='attachList["+i+"].fileType' value='"+jobj.data("type")+"'>";
+			
+		}); // end uploadResult
+		
+		formObj.append(str).submit();
+		
+	}); // end "button[type='submit']"
 	
 	var regex = new RegExp("(.*?)\.(exe|sh|zip|alz)$"); //바이러스 방지용 확장자 제어
 	var maxSize = 5242880; //5MB
@@ -114,7 +134,7 @@ $(document).ready(function(e){
 			return false;
 		}
 		return true;
-	}
+	} //end checkExtension
 	
 	function showUploadResult(uploadResultArr){
 		
@@ -127,36 +147,65 @@ $(document).ready(function(e){
 		$(uploadResultArr).each(function(i, obj) {
 			
 			
-			if (!obj.image) { //이미지 파일이 아닐경우 attach 이미지파일을 보여준다.
-				
-				var fileCallPath = encodeURIComponent(obj.uploadPath+"/"+obj.uuid+"_"+obj.fileName);
-			
-				var fileLink = fileCallPath.replace(new RegExp(/\\/g),"/");
-				
-				str += "<li><div><a href='/download?fileName="+fileCallPath+"'>"+
-						"<img src='/resources/img/attach.png'>" + obj.fileName + "</a>"+
-						"<span data-file=\'"+fileCallPath+"\' data-type='file'> x </span>"+
-						"<div></li>";
-				//a태그를 사용하여 클릭시 다운로드 받을 수 있게 한다.x표시추가
-			} else { 
+			if (obj.image) { //이미지 파일일 경우 섬네일을 보여준다.
 				//str += "<li>" + obj.fileName + "</li>";
 				
 				var fileCallPath = encodeURIComponent(obj.uploadPath+ "/s_"+obj.uuid+"_"+obj.fileName);
 				
-				var originPath = obj.uploadPath+ "\\"+obj.uuid +"_"+obj.fileName;
+				str += "<li data-path='"+obj.uploadPath+"'";
+				str +=" data-uuid='"+obj.uuid+"' data-filename='"+obj.fileName+"' data-type='"+obj.image+"'"
+				str +" ><div>";
+				str += "<span> "+ obj.fileName+"</span>";
+				str += "<button type='button' data-file=\'"+fileCallPath+"\' "
+				str += "data-type='image' class='btn btn-warning btn-circle'><i class='fa fa-times'></i></button><br>";
+				str += "<img src='/display?fileName="+fileCallPath+"'>";
+				str += "</div>";
+				str +"</li>";
+				//업로드된 정보 json으로 처리		
 				
-				originPath = originPath.replace(new RegExp(/\\/g),"/");
+			} else { 
 				
-				str += "<li><a href=\"javascript:showImage(\'"+originPath+"\')\">"+
-						"<img src='/display?fileName="+fileCallPath+"'></a>"+
-						"<span data-file=\'"+fileCallPath+"\' data-type='image'> x </span><li>";
-				//a태그를 이용하여 섬네일 클릭시 showImage()를 호출한다.x표시추가
+				var fileCallPath = encodeURIComponent(obj.uploadPath+"/"+obj.uuid+"_"+obj.fileName);
+				
+				var fileLink = fileCallPath.replace(new RegExp(/\\/g),"/");
+				
+				str += "<li "
+				str += "data-path='"+obj.uploadPath+"' data-uuid='"+obj.uuid+"' data-filename='"+obj.fileName+"' data-type='"+obj.image+"' ><div>";
+				str += "<span> "+ obj.fileName+"</span>";
+				str += "<button type='button' data-file=\'"+fileCallPath+"\' data-type='file' "
+				str += "class='btn btn-warning btn-circle'><i class='fa fa-times'></i></button><br>";
+				str += "<img src='/resources/img/attach.png'></a>";
+				str += "</div>";
+				str +"</li>";
+				//업로드된 정보 json으로 처리
 			}
-		});
+		}); // end uploadResultArr
 		
 		uploadUL.append(str);
 		
-	}
+	} // end showUploadResult
+
+	$(".uploadResult").on("click", "button", function(e) {
+		// └ 첨부파일 X(delete) 버튼 클릭시  작동하는 함수
+		console.log("delete file");
+		
+		var targetFile = $(this).data("file");
+		var type = $(this).data("type");
+		
+		var targetLi = $(this).closest("li");
+		
+		$.ajax({
+			url: '/deleteFile',
+			data: {fileName: targetFile, type:type},
+			dataType:'text',
+			type: 'POST',
+				success: function(result){
+					alert(result);
+					targetLi.remove();
+				}
+		}); //$.ajax
+	});
+	
 	
 	$("input[type='file']").change(function(e){
 		
@@ -169,8 +218,8 @@ $(document).ready(function(e){
 			//첨부파일 전송
 			for (var i = 0; i < files.length; i++) {
 
-				if (!checkExtension(files[i].name, files[i].size)) {
-					return false //파일 검사 
+				if (!checkExtension(files[i].name, files[i].size) ) {
+					return false; //파일 검사 
 				}
 
 				formData.append("uploadFile", files[i]);//첨부파일 데이터 추가
@@ -196,6 +245,8 @@ $(document).ready(function(e){
 		});
 
 	});
+	
+	
 </script>
 
 

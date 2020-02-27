@@ -381,3 +381,52 @@ border: 1px solid black;
 	background-color: #D499B9;
 }
 /*댓글창 번호 css 끝 */
+
+/* 첨부파일 css*/
+.uploadResult {
+	width : 100%;
+	background-color: #E6E6E6;
+}
+
+.uploadResult ul {
+	display: flex;
+	flex-flow: row;
+	justify-content: center;
+	align-items: center;
+}
+
+.uploadResult ul li {
+	list-style: none;
+	padding: 10px;
+	align-content: center;
+	text-align: center;
+}
+
+.uploadResult ul li img {
+	width: 100px;
+}
+.uploadResult ul li span {
+	color: black;
+}
+.bigPictureWrapper {
+	position: absolute;
+	display: none;
+	justify-content: center;
+	align-items: center;
+	top: 0%;
+	width: 100%;
+	height: 100%;
+	background-color: gray;
+	z-index: 100;
+	background: rgba(255,255,255,0.5);
+}
+.bigPicture {
+	position: relative;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.bigPicture img {
+	width: 600px;
+}
+/* 첨부파일 css 끝*/
